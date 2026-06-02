@@ -11,7 +11,8 @@ class Game {
         Snake snake;
         Coin coin;
 
-        void draw();
         Game();
+        void update(float deltaTime);
+        void draw();
         void deleteSelf();
 };

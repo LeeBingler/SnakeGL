@@ -6,10 +6,14 @@ Game::Game() {
     coin = Coin();
 }
 
+void Game::update(float deltaTime) {
+
+}
+
 void Game::draw() {
     map.draw();
-    snake.draw();
     coin.draw();
+    snake.draw();
 }
 
 void Game::deleteSelf() {
