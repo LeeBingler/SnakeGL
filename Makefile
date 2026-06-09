@@ -238,6 +238,30 @@ src/GUI/Snake.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Snake.cpp.s
 .PHONY : src/GUI/Snake.cpp.s
 
+src/GUI/Timer.o: src/GUI/Timer.cpp.o
+.PHONY : src/GUI/Timer.o
+
+# target to build an object file
+src/GUI/Timer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Timer.cpp.o
+.PHONY : src/GUI/Timer.cpp.o
+
+src/GUI/Timer.i: src/GUI/Timer.cpp.i
+.PHONY : src/GUI/Timer.i
+
+# target to preprocess a source file
+src/GUI/Timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Timer.cpp.i
+.PHONY : src/GUI/Timer.cpp.i
+
+src/GUI/Timer.s: src/GUI/Timer.cpp.s
+.PHONY : src/GUI/Timer.s
+
+# target to generate assembly for a file
+src/GUI/Timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Timer.cpp.s
+.PHONY : src/GUI/Timer.cpp.s
+
 src/Utils/Shader.o: src/Utils/Shader.cpp.o
 .PHONY : src/Utils/Shader.o
 
@@ -380,6 +404,9 @@ help:
 	@echo "... src/GUI/Snake.o"
 	@echo "... src/GUI/Snake.i"
 	@echo "... src/GUI/Snake.s"
+	@echo "... src/GUI/Timer.o"
+	@echo "... src/GUI/Timer.i"
+	@echo "... src/GUI/Timer.s"
 	@echo "... src/Utils/Shader.o"
 	@echo "... src/Utils/Shader.i"
 	@echo "... src/Utils/Shader.s"

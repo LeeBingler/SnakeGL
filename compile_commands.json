@@ -1,1 +1,62 @@
-/home/lee/Documents/C++/SnakeGL/compile_commands.json
+[
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/cc  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu11 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/Utils/glad.c.o -c /home/lee/Documents/C++/SnakeGL/src/Utils/glad.c",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/Utils/glad.c",
+  "output": "CMakeFiles/test.dir/src/Utils/glad.c.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/main.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/main.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/main.cpp",
+  "output": "CMakeFiles/test.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/renderLoop.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/renderLoop.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/renderLoop.cpp",
+  "output": "CMakeFiles/test.dir/src/renderLoop.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/Utils/Shader.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/Utils/Shader.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/Utils/Shader.cpp",
+  "output": "CMakeFiles/test.dir/src/Utils/Shader.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/Utils/Texture2D.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/Utils/Texture2D.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/Utils/Texture2D.cpp",
+  "output": "CMakeFiles/test.dir/src/Utils/Texture2D.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/GUI/Map.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/GUI/Map.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/GUI/Map.cpp",
+  "output": "CMakeFiles/test.dir/src/GUI/Map.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/GUI/Snake.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/GUI/Snake.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/GUI/Snake.cpp",
+  "output": "CMakeFiles/test.dir/src/GUI/Snake.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/GUI/Game.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/GUI/Game.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/GUI/Game.cpp",
+  "output": "CMakeFiles/test.dir/src/GUI/Game.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/GUI/Coin.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/GUI/Coin.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/GUI/Coin.cpp",
+  "output": "CMakeFiles/test.dir/src/GUI/Coin.cpp.o"
+},
+{
+  "directory": "/home/lee/Documents/C++/SnakeGL",
+  "command": "/usr/bin/c++  -I/home/lee/Documents/C++/SnakeGL/include -std=gnu++17 -g3 -g -Wall -Wextra -o CMakeFiles/test.dir/src/GUI/Timer.cpp.o -c /home/lee/Documents/C++/SnakeGL/src/GUI/Timer.cpp",
+  "file": "/home/lee/Documents/C++/SnakeGL/src/GUI/Timer.cpp",
+  "output": "CMakeFiles/test.dir/src/GUI/Timer.cpp.o"
+}
+]
