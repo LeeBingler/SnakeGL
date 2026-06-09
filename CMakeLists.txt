@@ -28,6 +28,7 @@ set(SRC_CPP
     src/GUI/Game.cpp
     src/GUI/Coin.cpp
     src/GUI/Timer.cpp
+    src/Core/Core.cpp
 )
  
 # ── Executable ────────────────────────────────────────────────────────────────
