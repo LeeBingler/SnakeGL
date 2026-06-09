@@ -1,0 +1,5 @@
+BasedOnStyle: LLVM
+
+# ── Includes : do NOT sort or regroup anything ────────────────────────────────
+SortIncludes:        Never
+IncludeBlocks:       Preserve

@@ -1,3 +1,13 @@
 *.o
 test
 vgcore*
+
+CMakeFiles/
+CMakeCache*
+cmake*
+build/
+.cache/
+
+compile_commands.json
+Makefile
+*.json
