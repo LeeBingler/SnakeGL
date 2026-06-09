@@ -1,4 +1,4 @@
-#include <main/game/Game.hpp>
+#include <main/GUI/Game.hpp>
 
 Game::Game() {
   map = Map();

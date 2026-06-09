@@ -1,4 +1,4 @@
-#include <main/game/Map.hpp>
+#include <main/GUI/Map.hpp>
 
 Map::Map() {
   nbCols = 15;

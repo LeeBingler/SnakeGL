@@ -1,10 +1,8 @@
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
-#include <iostream>
+#include <GLFW/glfw3.h>
 #include <math.h>
 
-#include <main/Shader.hpp>
-#include <main/game/Game.hpp>
+#include <main/GUI/Game.hpp>
 
 // close window when escape is press
 void processInput(GLFWwindow *window) {

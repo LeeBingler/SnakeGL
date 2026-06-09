@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <ctime>
-#include <main/game/Coin.hpp>
+#include <main/GUI/Coin.hpp>
 
 Coin::Coin() {
   srand(time(0));
