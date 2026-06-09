@@ -10,27 +10,18 @@ void processInput(GLFWwindow *window) {
     glfwSetWindowShouldClose(window, true);
 }
 
-void updateDelta(float deltaTime, float lastFrame) {
-  float currentFrame = glfwGetTime();
-  deltaTime = currentFrame - lastFrame;
-  lastFrame = currentFrame;
-}
-
 // Render loop
 void renderLoop(GLFWwindow *window) {
   Game myGame = Game();
-  float deltaTime = 0.0f;
-  float lastFrame = 0.0f;
 
   // render loop
   while (!glfwWindowShouldClose(window)) {
-    updateDelta(deltaTime, lastFrame);
     processInput(window);
 
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    myGame.update(deltaTime);
+    myGame.update();
     myGame.draw();
 
     glfwPollEvents();

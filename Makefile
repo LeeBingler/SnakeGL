@@ -142,6 +142,30 @@ symlink_compile_commands/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/symlink_compile_commands.dir/build.make CMakeFiles/symlink_compile_commands.dir/build
 .PHONY : symlink_compile_commands/fast
 
+src/Core/Core.o: src/Core/Core.cpp.o
+.PHONY : src/Core/Core.o
+
+# target to build an object file
+src/Core/Core.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Core/Core.cpp.o
+.PHONY : src/Core/Core.cpp.o
+
+src/Core/Core.i: src/Core/Core.cpp.i
+.PHONY : src/Core/Core.i
+
+# target to preprocess a source file
+src/Core/Core.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Core/Core.cpp.i
+.PHONY : src/Core/Core.cpp.i
+
+src/Core/Core.s: src/Core/Core.cpp.s
+.PHONY : src/Core/Core.s
+
+# target to generate assembly for a file
+src/Core/Core.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Core/Core.cpp.s
+.PHONY : src/Core/Core.cpp.s
+
 src/GUI/Coin.o: src/GUI/Coin.cpp.o
 .PHONY : src/GUI/Coin.o
 
@@ -392,6 +416,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... symlink_compile_commands"
 	@echo "... test"
+	@echo "... src/Core/Core.o"
+	@echo "... src/Core/Core.i"
+	@echo "... src/Core/Core.s"
 	@echo "... src/GUI/Coin.o"
 	@echo "... src/GUI/Coin.i"
 	@echo "... src/GUI/Coin.s"
