@@ -1,12 +1,14 @@
+#include "main/GUI/Timer.hpp"
 #include <main/GUI/Game.hpp>
 
 Game::Game() {
   map = Map();
   snake = Snake();
   coin = Coin();
+  timer = Timer();
 }
 
-void Game::update(float deltaTime) {}
+void Game::update() { timer.updateDelta(); }
 
 void Game::draw() {
   map.draw();
