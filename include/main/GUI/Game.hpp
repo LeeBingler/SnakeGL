@@ -6,12 +6,15 @@
 #include <main/GUI/Timer.hpp>
 #include <main/Shader.hpp>
 
+enum Game_state { MENU, IN_GAME, END };
+
 class Game {
 public:
   Map map;
   Snake snake;
   Coin coin;
   Timer timer;
+  Game_state game_state;
 
   Game();
   void update();

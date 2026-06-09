@@ -1,4 +1,3 @@
-#include "main/GUI/Timer.hpp"
 #include <main/GUI/Game.hpp>
 
 Game::Game() {
@@ -6,6 +5,7 @@ Game::Game() {
   snake = Snake();
   coin = Coin();
   timer = Timer();
+  game_state = MENU;
 }
 
 void Game::update() { timer.updateDelta(); }
