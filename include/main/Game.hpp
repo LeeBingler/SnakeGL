@@ -21,7 +21,7 @@ public:
   Core core;
 
   Game();
+  ~Game();
   void update();
   void draw();
-  void deleteSelf();
 };

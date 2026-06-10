@@ -17,7 +17,7 @@ void Game::draw() {
   snake.draw();
 }
 
-void Game::deleteSelf() {
+Game::~Game() {
   map.deleteSelf();
   snake.deleteSelf();
   coin.deleteSelf();

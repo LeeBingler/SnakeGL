@@ -190,30 +190,6 @@ src/GUI/Coin.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Coin.cpp.s
 .PHONY : src/GUI/Coin.cpp.s
 
-src/GUI/Game.o: src/GUI/Game.cpp.o
-.PHONY : src/GUI/Game.o
-
-# target to build an object file
-src/GUI/Game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Game.cpp.o
-.PHONY : src/GUI/Game.cpp.o
-
-src/GUI/Game.i: src/GUI/Game.cpp.i
-.PHONY : src/GUI/Game.i
-
-# target to preprocess a source file
-src/GUI/Game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Game.cpp.i
-.PHONY : src/GUI/Game.cpp.i
-
-src/GUI/Game.s: src/GUI/Game.cpp.s
-.PHONY : src/GUI/Game.s
-
-# target to generate assembly for a file
-src/GUI/Game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Game.cpp.s
-.PHONY : src/GUI/Game.cpp.s
-
 src/GUI/Map.o: src/GUI/Map.cpp.o
 .PHONY : src/GUI/Map.o
 
@@ -285,6 +261,30 @@ src/GUI/Timer.s: src/GUI/Timer.cpp.s
 src/GUI/Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GUI/Timer.cpp.s
 .PHONY : src/GUI/Timer.cpp.s
+
+src/Game.o: src/Game.cpp.o
+.PHONY : src/Game.o
+
+# target to build an object file
+src/Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Game.cpp.o
+.PHONY : src/Game.cpp.o
+
+src/Game.i: src/Game.cpp.i
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
 
 src/Utils/Shader.o: src/Utils/Shader.cpp.o
 .PHONY : src/Utils/Shader.o
@@ -422,9 +422,6 @@ help:
 	@echo "... src/GUI/Coin.o"
 	@echo "... src/GUI/Coin.i"
 	@echo "... src/GUI/Coin.s"
-	@echo "... src/GUI/Game.o"
-	@echo "... src/GUI/Game.i"
-	@echo "... src/GUI/Game.s"
 	@echo "... src/GUI/Map.o"
 	@echo "... src/GUI/Map.i"
 	@echo "... src/GUI/Map.s"
@@ -434,6 +431,9 @@ help:
 	@echo "... src/GUI/Timer.o"
 	@echo "... src/GUI/Timer.i"
 	@echo "... src/GUI/Timer.s"
+	@echo "... src/Game.o"
+	@echo "... src/Game.i"
+	@echo "... src/Game.s"
 	@echo "... src/Utils/Shader.o"
 	@echo "... src/Utils/Shader.i"
 	@echo "... src/Utils/Shader.s"
