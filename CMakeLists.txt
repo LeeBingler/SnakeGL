@@ -21,11 +21,11 @@ set(SRC_C
 set(SRC_CPP
     src/main.cpp
     src/renderLoop.cpp
+    src/Game.cpp
     src/Utils/Shader.cpp
     src/Utils/Texture2D.cpp
     src/GUI/Map.cpp
     src/GUI/Snake.cpp
-    src/GUI/Game.cpp
     src/GUI/Coin.cpp
     src/GUI/Timer.cpp
     src/Core/Core.cpp

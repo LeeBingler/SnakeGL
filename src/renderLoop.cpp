@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <math.h>
 
-#include <main/GUI/Game.hpp>
+#include <main/Game.hpp>
 
 // close window when escape is press
 void processInput(GLFWwindow *window) {

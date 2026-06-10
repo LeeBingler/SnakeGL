@@ -4,7 +4,8 @@
 #include <main/GUI/Map.hpp>
 #include <main/GUI/Coin.hpp>
 #include <main/GUI/Timer.hpp>
-#include <main/Shader.hpp>
+
+#include <main/Core/Core.hpp>
 
 enum Game_state { MENU, IN_GAME, END };
 
@@ -14,7 +15,10 @@ public:
   Snake snake;
   Coin coin;
   Timer timer;
+
+
   Game_state game_state;
+  Core core;
 
   Game();
   void update();

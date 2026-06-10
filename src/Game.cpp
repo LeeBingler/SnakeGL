@@ -1,10 +1,11 @@
-#include <main/GUI/Game.hpp>
+#include <main/Game.hpp>
 
 Game::Game() {
   map = Map();
   snake = Snake();
   coin = Coin();
   timer = Timer();
+  core = Core();
   game_state = MENU;
 }
 
