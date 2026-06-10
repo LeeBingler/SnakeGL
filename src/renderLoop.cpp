@@ -27,6 +27,4 @@ void renderLoop(GLFWwindow *window) {
     glfwPollEvents();
     glfwSwapBuffers(window);
   }
-
-  myGame.deleteSelf();
 }
