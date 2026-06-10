@@ -44,7 +44,6 @@ void Snake::setMatrix() {
 }
 
 Snake::Snake() {
-  positionHead.fill(0);
   setModel();
   setMatrix();
 }
