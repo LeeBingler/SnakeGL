@@ -1,21 +1,21 @@
 #pragma once
 
+#include <array>
+#include <list>
 #include <vector>
 
 enum Direction_keys { UP, DOWN, LEFT, RIGHT };
 
 struct Snake_part {
   Direction_keys direction;
-  std::vector<int> position;
-  struct Snake_part *next;
-  struct Snake_part *prev;
+  std::array<int, 2> position;
 };
 
 class Core {
 public:
   int score;
-  std::vector<std::vector<int>> coin_position;
-  struct Snake_part *head;
+  std::vector<std::array<int, 2>> coin_position;
+  std::list<struct Snake_part> head;
 
   Core();
 };
