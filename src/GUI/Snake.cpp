@@ -1,6 +1,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <main/GUI/Snake.hpp>
+#include <main/Core/Core.hpp>
+
+#include <iostream>
 
 void Snake::setModel() {
   float vertices[] = {
@@ -51,20 +54,17 @@ Snake::Snake() {
 void Snake::update() {
   // matrix
   model = glm::mat4(1.0f);
-  model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f),
-                      glm::vec3(0.5f, 1.0f, 0.0f));
 
-  modelLoc = glGetUniformLocation(shader.ID, "model");
-  glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-  viewLoc = glGetUniformLocation(shader.ID, "view");
-  glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-  projLoc = glGetUniformLocation(shader.ID, "projection");
-  glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+  shader.setMat4("model", model);
+  shader.setMat4("view", view);
+  shader.setMat4("projection", projection);
 }
 
-void Snake::draw() {
+void Snake::draw(std::list<struct Snake_part> &head) {
   shader.use();
   update();
+  std::cout << head.front().position[0];
+  std::cout << head.front().position[1] << std::endl;
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

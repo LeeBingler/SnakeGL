@@ -8,6 +8,6 @@ Coin::Coin() {
   position.at(1) = rand() % 17;
 }
 
-void Coin::draw() { shader.use(); }
+void Coin::draw(std::vector<std::array<int, 2>> coin_position) { shader.use(); }
 
 void Coin::deleteSelf() { shader.deleteProgram(); }

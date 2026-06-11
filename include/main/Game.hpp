@@ -15,7 +15,8 @@ public:
   Snake snake;
   Coin coin;
   Timer timer;
-
+  double accumulative;
+  double intervale;
 
   Game_state game_state;
   Core core;
@@ -23,5 +24,6 @@ public:
   Game();
   ~Game();
   void update();
+  void processInput(GLFWwindow *window);
   void draw();
 };

@@ -7,14 +7,35 @@ Game::Game() {
   timer = Timer();
   core = Core();
   game_state = MENU;
+  intervale = 1.0;
+  accumulative = 0.0;
 }
 
-void Game::update() { timer.updateDelta(); }
+void Game::processInput(GLFWwindow *window) {
+  if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    core.head.front().direction = UP;
+  if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    core.head.front().direction = RIGHT;
+  if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    core.head.front().direction = DOWN;
+  if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    core.head.front().direction = LEFT;
+}
+
+void Game::update() {
+  timer.updateDelta();
+  accumulative += timer.deltaTime;
+
+  if (accumulative >= intervale) {
+    core.update();
+    accumulative -= intervale;
+  }
+}
 
 void Game::draw() {
-  map.draw();
-  coin.draw();
-  snake.draw();
+  map.draw(core.map);
+  coin.draw(core.coin_position);
+  snake.draw(core.head);
 }
 
 Game::~Game() {
