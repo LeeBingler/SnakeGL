@@ -15,7 +15,7 @@ class Core {
 public:
   int score;
   std::vector<std::array<int, 2>> coin_position;
-  std::list<struct Snake_part> head;
+  std::list<struct Snake_part> snake;
   std::array<std::array<int, 15>, 17> map;
 
   Core();
@@ -23,5 +23,5 @@ public:
 
 private:
   void updateSnakePosition();
+  void addNodeSnake();
 };
-

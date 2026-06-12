@@ -15,13 +15,13 @@ Game::Game(GLFWwindow* main_window) {
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    core.head.front().direction = UP;
+    core.snake.front().direction = UP;
   else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    core.head.front().direction = RIGHT;
+    core.snake.front().direction = RIGHT;
   else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    core.head.front().direction = DOWN;
+    core.snake.front().direction = DOWN;
   else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    core.head.front().direction = LEFT;
+    core.snake.front().direction = LEFT;
 }
 
 void Game::update() {
@@ -37,7 +37,7 @@ void Game::update() {
 void Game::draw() {
   map.draw(core.map);
   coin.draw(core.coin_position);
-  snake.draw(core.head);
+  snake.draw(core.snake);
 }
 
 Game::~Game() {

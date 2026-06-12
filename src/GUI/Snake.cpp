@@ -5,8 +5,6 @@
 #include <main/GUI/Snake.hpp>
 #include <main/Core/Core.hpp>
 
-#include <iostream>
-
 void Snake::setModel() {
   constexpr float vertices[] = {
       0.5f,  0.5f,  0.0f, // top right
@@ -46,8 +44,8 @@ void Snake::setMatrix(GLFWwindow* window) {
 
   projection =
       glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height), 0.1f, 100.0f);
-  translate = glm::vec3(0.0, 0.0, 0.0);
 
+  translate = glm::vec3(0.0, 0.0, 0.0);
   scale = glm::vec3(width / 15.0, height / 17.0, 1.0f);
 }
 
