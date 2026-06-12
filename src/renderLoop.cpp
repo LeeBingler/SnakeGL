@@ -5,14 +5,14 @@
 #include <main/Game.hpp>
 
 // close window when escape is press
-void processInput(GLFWwindow *window) {
+void processInput(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
 }
 
 // Render loop
-void renderLoop(GLFWwindow *window) {
-  Game myGame = Game();
+void renderLoop(GLFWwindow* window) {
+  Game myGame = Game(window);
 
   // render loop
   while (!glfwWindowShouldClose(window)) {
@@ -21,7 +21,7 @@ void renderLoop(GLFWwindow *window) {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    myGame.processInput(window);
+    myGame.processInput();
     myGame.update();
     myGame.draw();
 

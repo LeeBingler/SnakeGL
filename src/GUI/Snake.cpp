@@ -29,32 +29,40 @@ void Snake::setModel() {
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-               GL_STATIC_DRAW);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
 }
 
-void Snake::setMatrix() {
+void Snake::setMatrix(GLFWwindow* window) {
+  int width, height = 0;
+  glfwGetWindowSize(window, &width, &height);
+
   model = glm::mat4(1.0f);
 
   view = glm::mat4(1.0f);
-  view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+  view = glm::translate(view, glm::vec3(0.0f, static_cast<float>(height), -1.0f));
 
   projection =
-      glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
+      glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height), 0.1f, 100.0f);
   translate = glm::vec3(0.0, 0.0, 0.0);
-  scale = glm::vec3(15.0 / 17.0);
+
+  scale = glm::vec3(width / 15.0, height / 17.0, 1.0f);
 }
 
-Snake::Snake() {
+Snake::Snake(GLFWwindow* window) {
   setModel();
-  setMatrix();
+  setMatrix(window);
 }
 
-void Snake::update() {
+Snake::Snake() { return; }
+
+void Snake::update_matrices(std::list<struct Snake_part>& head) {
+  // update snake position
+  Snake_part_t node = head.front();
+  setTranslate2D(node.position[0], -node.position[1]);
+
   // matrix update
   model = glm::mat4(1.0f);
   model = glm::scale(model, scale);
@@ -72,10 +80,8 @@ void Snake::setTranslate2D(float x, float y) {
 
 void Snake::draw(std::list<struct Snake_part>& head) {
   shader.use();
-  Snake_part_t node = head.front();
-  setTranslate2D(node.position[0], node.position[1]);
 
-  update();
+  update_matrices(head);
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

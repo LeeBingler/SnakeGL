@@ -7,23 +7,27 @@
 
 #include <main/Core/Core.hpp>
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 enum Game_state { MENU, IN_GAME, END };
 
 class Game {
 public:
   Map map;
-  Snake snake;
   Coin coin;
   Timer timer;
+  Snake snake;
   double accumulative;
   double intervale;
 
   Game_state game_state;
   Core core;
+  GLFWwindow* window;
 
-  Game();
+  Game(GLFWwindow* window);
   ~Game();
   void update();
-  void processInput(GLFWwindow *window);
+  void processInput();
   void draw();
 };

@@ -3,6 +3,9 @@
 #include <main/Shader.hpp>
 #include <list>
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 class Snake {
 public:
   // Model
@@ -15,8 +18,9 @@ public:
   glm::vec3 translate;
 
   Snake();
+  Snake(GLFWwindow* window);
   void draw(std::list<struct Snake_part>& head);
-  void update();
+  void update_matrices(std::list<struct Snake_part>& head);
   void deleteSelf();
 
   void setTranslate2D(float x, float y);
@@ -24,5 +28,5 @@ public:
 
 private:
   void setModel();
-  void setMatrix();
+  void setMatrix(GLFWwindow* window);
 };

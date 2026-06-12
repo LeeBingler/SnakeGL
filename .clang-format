@@ -6,3 +6,5 @@ IncludeBlocks:       Preserve
 
 # Make the pointer go left
 PointerAlignment: Left
+
+ColumnLimit: 100
