@@ -1,17 +1,8 @@
 #include <main/Game.hpp>
 
-Game::Game(GLFWwindow* main_window) {
-  map = Map();
-  coin = Coin();
-  timer = Timer();
-  core = Core();
-  snake = Snake(main_window);
-
-  this->window = main_window;
-  game_state = MENU;
-  intervale = 1.0;
-  accumulative = 0.0;
-}
+Game::Game(GLFWwindow* main_window)
+    : map(), coin(), timer(), core(), snake(main_window), window(main_window), game_state(MENU),
+      intervale(1.0), accumulative(0.0) {}
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
