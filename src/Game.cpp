@@ -42,6 +42,5 @@ void Game::draw() {
 
 Game::~Game() {
   map.deleteSelf();
-  snake.deleteSelf();
   coin.deleteSelf();
 }

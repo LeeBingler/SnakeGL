@@ -1,5 +1,6 @@
 #include "glm/detail/type_vec.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "main/Shader.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iterator>
@@ -100,4 +101,10 @@ void Snake::draw(std::list<struct Snake_part>& snake_core) {
   }
 }
 
-void Snake::deleteSelf() { shader.deleteProgram(); }
+Snake::~Snake() {
+  for (auto& node : snake_gui) {
+    glDeleteVertexArrays(1, &node.VAO);
+    glDeleteBuffers(1, &node.VBO);
+    glDeleteBuffers(1, &node.EBO);
+  }
+}
