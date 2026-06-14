@@ -14,14 +14,17 @@ typedef struct Snake_part {
 class Core {
 public:
   int score;
+  Direction_keys wanted_direction;
   std::vector<std::array<int, 2>> coin_position;
   std::list<struct Snake_part> snake;
   std::array<std::array<int, 15>, 17> map;
 
   Core();
   void update();
+  void processInput(Direction_keys new_direction);
 
 private:
+  void updateHead(Snake_part_t& node, std::array<int, 2> positionSnake);
   void updateSnakePosition();
   void addNodeSnake();
 };

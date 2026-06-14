@@ -1,3 +1,4 @@
+#include "main/Core/Core.hpp"
 #include <main/Game.hpp>
 
 Game::Game(GLFWwindow* main_window)
@@ -6,13 +7,13 @@ Game::Game(GLFWwindow* main_window)
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    core.snake.front().direction = UP;
+    core.processInput(UP);
   else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    core.snake.front().direction = RIGHT;
+    core.processInput(RIGHT);
   else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    core.snake.front().direction = DOWN;
+    core.processInput(DOWN);
   else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    core.snake.front().direction = LEFT;
+    core.processInput(LEFT);
 }
 
 void Game::update() {
