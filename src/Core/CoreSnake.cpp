@@ -68,13 +68,12 @@ void Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
   head.direction = wanted_direction;
 }
 
-void Core::updateSnakePosition() {
+void Core::updateSnake() {
   std::list<Snake_part_t>::iterator it;
   std::array<int, 2> prevPosition;
   Direction_keys prevDirection;
 
-  for (it = snake.begin(); it != snake.end(); it++) {
-    Snake_part_t& node = *it;
+  for (auto& node : snake) {
     std::array<int, 2> positionSnake = node.position;
     Direction_keys directionSnake = node.direction;
 

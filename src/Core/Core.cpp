@@ -28,7 +28,7 @@ Core::Core() : score(0) {
 void Core::processInput(Direction_keys new_direction) { wanted_direction = new_direction; }
 
 void Core::update() {
-  updateSnakePosition();
+  updateSnake();
 
   for (unsigned int y = 0; y < map[0].size(); y++) {
     for (unsigned int x = 0; x < map[y].size(); x++) {

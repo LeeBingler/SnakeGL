@@ -25,6 +25,6 @@ public:
 
 private:
   void updateHead(Snake_part_t& node, std::array<int, 2> positionSnake);
-  void updateSnakePosition();
+  void updateSnake();
   void addNodeSnake();
 };
