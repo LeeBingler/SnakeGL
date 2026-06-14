@@ -49,8 +49,6 @@ Snake::Snake(GLFWwindow* window) {
   snake_gui.push_back(makeNewNode(0.0, 0.0));
 }
 
-Snake::Snake() { return; }
-
 void Snake::update_matrices(std::list<struct Snake_part>& snake_core) {
   std::list<Snake_part_t>::iterator it_core = snake_core.begin();
 
@@ -102,6 +100,8 @@ void Snake::draw(std::list<struct Snake_part>& snake_core) {
 }
 
 Snake::~Snake() {
+  shader.deleteProgram();
+
   for (auto& node : snake_gui) {
     glDeleteVertexArrays(1, &node.VAO);
     glDeleteBuffers(1, &node.VBO);

@@ -35,7 +35,6 @@ public:
       1, 2, 3  // second Triangle
   };
 
-  Snake();
   Snake(GLFWwindow* window);
   ~Snake();
 
