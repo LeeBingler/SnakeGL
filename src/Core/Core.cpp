@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-Core::Core() : score(0) {
+Core::Core() : score(0), wanted_direction(RIGHT) {
   srand((unsigned)time(0));
 
   Snake_part_t head = {.direction = RIGHT, .position = {2, 0}};

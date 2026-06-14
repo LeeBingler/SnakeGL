@@ -1,5 +1,7 @@
 #include <main/Core/Core.hpp>
 
+#include <iostream>
+
 void Core::addNodeSnake() {
   Snake_part_t tail = snake.back();
   Snake_part_t new_node = {.direction = tail.direction, .position = tail.position};
@@ -27,6 +29,9 @@ void Core::addNodeSnake() {
 
 std::array<int, 2> getNewPosition(Direction_keys direction, std::array<int, 2> positionSnake) {
   std::array<int, 2> newPosition;
+
+  std::cout << direction << std::endl;
+
   switch (direction) {
   case LEFT:
     newPosition = {positionSnake[0] - 1, positionSnake[1]};
@@ -62,18 +67,23 @@ void Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
     }
   }
 
+  std::cout << positionSnake[0] << positionSnake[1] << std::endl;
+  std::cout << newPosition[0] << newPosition[1] << std::endl;
+
   map[newPosition[0]][newPosition[1]] = 1;
   map[positionSnake[0]][positionSnake[1]] = 0;
   head.position = newPosition;
   head.direction = wanted_direction;
+
+  std::cout << "test2" << std::endl;
 }
 
 void Core::updateSnake() {
-  std::list<Snake_part_t>::iterator it;
   std::array<int, 2> prevPosition;
   Direction_keys prevDirection;
 
-  for (auto& node : snake) {
+  for (std::list<Snake_part_t>::iterator it = snake.begin(); it != snake.end(); it++) {
+    Snake_part_t& node = *it;
     std::array<int, 2> positionSnake = node.position;
     Direction_keys directionSnake = node.direction;
 
