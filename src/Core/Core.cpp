@@ -19,7 +19,7 @@ Core::Core() {
   }
 
   // one is for the snake position
-  map[1][0] = 1;
+  map[2][0] = 1;
 
   Core::addNodeSnake();
 }
@@ -106,8 +106,8 @@ void Core::updateSnakePosition() {
 void Core::update() {
   updateSnakePosition();
 
-  for (int y = 0; y < map[0].size(); y++) {
-    for (int x = 0; x < map[y].size(); x++) {
+  for (unsigned int y = 0; y < map[0].size(); y++) {
+    for (unsigned int x = 0; x < map[y].size(); x++) {
       std::cout << map[x][y];
     }
     std::cout << std::endl;
