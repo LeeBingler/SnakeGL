@@ -29,6 +29,7 @@ set(SRC_CPP
     src/GUI/Coin.cpp
     src/GUI/Timer.cpp
     src/Core/Core.cpp
+    src/Core/CoreSnake.cpp
 )
  
 # ── Executable ────────────────────────────────────────────────────────────────
