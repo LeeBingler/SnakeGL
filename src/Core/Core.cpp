@@ -34,19 +34,23 @@ Core::Core() : score(0), wanted_direction(RIGHT) {
 
 void Core::processInput(Direction_keys new_direction) { wanted_direction = new_direction; }
 
-void Core::updateCoin(std::array<int, 2> newPosition) {
+void Core::updateCoin() {
   for (unsigned int i = 0; i < coin_position.size(); i++) {
-    if (newPosition[0] != coin_position[i][0] && newPosition[1] != coin_position[i][1])
+    if (map[coin_position[i][0]][coin_position[i][1]] == 2)
       continue;
 
-    coin_position[i][0] = rand() % height_map;
-    coin_position[i][1] = rand() % width_map;
+    do {
+      coin_position[i][0] = rand() % height_map;
+      coin_position[i][1] = rand() % width_map;
+    } while (map[coin_position[i][0]][coin_position[i][1]] != 0);
+
     map[coin_position[i][0]][coin_position[i][1]] = 2;
   }
 }
 
 void Core::update() {
   updateSnake();
+  updateCoin();
 
   for (int y = 0; y < width_map; y++) {
     for (int x = 0; x < height_map; x++) {

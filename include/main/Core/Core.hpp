@@ -30,5 +30,5 @@ private:
   void updateSnake();
   void addNodeSnake();
 
-  void updateCoin(std::array<int, 2> newPosition);
+  void updateCoin();
 };
