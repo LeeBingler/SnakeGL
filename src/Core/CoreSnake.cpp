@@ -63,6 +63,12 @@ void Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
     }
   }
 
+  // if the newPosition is a coin, then add a node
+  if (map[newPosition[0]][newPosition[1]] == 2) {
+    addNodeSnake();
+    updateCoin(newPosition);
+  }
+
   map[newPosition[0]][newPosition[1]] = 1;
   map[positionSnake[0]][positionSnake[1]] = 0;
   head.position = newPosition;

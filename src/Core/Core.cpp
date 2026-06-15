@@ -11,13 +11,16 @@ Core::Core() : score(0), wanted_direction(RIGHT) {
   Snake_part_t head = {.direction = RIGHT, .position = {2, 0}};
   snake.push_back(head);
 
-  for (unsigned int i = 0; i < map.max_size(); i++) {
-    map[i].fill(0);
+  map.resize(height_map);
+
+  for (int i = 0; i < height_map; i++) {
+    map[i].resize(width_map);
+    std::fill(map[i].begin(), map[i].end(), 0);
   }
 
   // 2 is for the coin position
   for (int i = 0; i < 3; i++) {
-    std::array<int, 2> position{rand() % 17, rand() % 15};
+    std::array<int, 2> position{rand() % width_map, rand() % height_map};
     map[position[0]][position[1]] = 2;
     coin_position.push_back({position});
   }
@@ -31,11 +34,22 @@ Core::Core() : score(0), wanted_direction(RIGHT) {
 
 void Core::processInput(Direction_keys new_direction) { wanted_direction = new_direction; }
 
+void Core::updateCoin(std::array<int, 2> newPosition) {
+  for (unsigned int i = 0; i < coin_position.size(); i++) {
+    if (newPosition[0] != coin_position[i][0] && newPosition[1] != coin_position[i][1])
+      continue;
+
+    coin_position[i][0] = rand() % height_map;
+    coin_position[i][1] = rand() % width_map;
+    map[coin_position[i][0]][coin_position[i][1]] = 2;
+  }
+}
+
 void Core::update() {
   updateSnake();
 
-  for (unsigned int y = 0; y < map[0].size(); y++) {
-    for (unsigned int x = 0; x < map[y].size(); x++) {
+  for (int y = 0; y < width_map; y++) {
+    for (int x = 0; x < height_map; x++) {
       std::cout << map[x][y];
     }
     std::cout << std::endl;

@@ -2,6 +2,6 @@
 
 Map::Map() {}
 
-void Map::draw(std::array<std::array<int, 15>, 17> map) { shader.use(); }
+void Map::draw(std::vector<std::vector<int>> map) { shader.use(); }
 
 void Map::deleteSelf() { shader.deleteProgram(); }
