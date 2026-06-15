@@ -4,4 +4,4 @@ Map::Map() {}
 
 void Map::draw(std::vector<std::vector<int>> map) { shader.use(); }
 
-void Map::deleteSelf() { shader.deleteProgram(); }
+Map::~Map() { shader.deleteProgram(); }
