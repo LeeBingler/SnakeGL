@@ -1,3 +1,4 @@
+#include <array>
 #include <cstdlib>
 #include <ctime>
 #include <main/Core/Core.hpp>
@@ -10,15 +11,18 @@ Core::Core() : score(0), wanted_direction(RIGHT) {
   Snake_part_t head = {.direction = RIGHT, .position = {2, 0}};
   snake.push_back(head);
 
-  for (int i = 0; i < 3; i++) {
-    coin_position.push_back({rand() % 17, rand() % 15});
-  }
-
   for (unsigned int i = 0; i < map.max_size(); i++) {
     map[i].fill(0);
   }
 
-  // one is for the snake position
+  // 2 is for the coin position
+  for (int i = 0; i < 3; i++) {
+    std::array<int, 2> position{rand() % 17, rand() % 15};
+    map[position[0]][position[1]] = 2;
+    coin_position.push_back({position});
+  }
+
+  // 1 is for the snake position
   map[head.position[0]][head.position[1]] = 1;
 
   Core::addNodeSnake();
