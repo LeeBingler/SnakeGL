@@ -1,13 +1,7 @@
-#include <cstdlib>
-#include <ctime>
 #include <main/GUI/Coin.hpp>
 
-Coin::Coin() {
-  srand(time(0));
-  position.at(0) = rand() % 15;
-  position.at(1) = rand() % 17;
-}
+Coin::Coin() {}
 
-void Coin::draw(std::vector<std::array<int, 2>> coin_position) { shader.use(); }
+void Coin::draw(std::vector<std::vector<int>> coin_position) { shader.use(); }
 
-void Coin::deleteSelf() { shader.deleteProgram(); }
+Coin::~Coin() { shader.deleteProgram(); }

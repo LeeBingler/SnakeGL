@@ -35,6 +35,7 @@ Core::Core() : score(0), wanted_direction(RIGHT) {
 void Core::processInput(Direction_keys new_direction) { wanted_direction = new_direction; }
 
 void Core::updateCoin() {
+  // In all coin_position, if in map the coin doesnt exist, replace it
   for (unsigned int i = 0; i < coin_position.size(); i++) {
     if (map[coin_position[i][0]][coin_position[i][1]] == 2)
       continue;
