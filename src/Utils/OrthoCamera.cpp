@@ -1,5 +1,9 @@
 #include <main/OrthoCamera.hpp>
 
+OrthoCamera::OrthoCamera() {
+  projection = glm::ortho(-100.0, 100.0, -100.0, 100.0, 0.1, 100.0);
+}
+
 OrthoCamera::OrthoCamera(float left, float right, float bottom, float top, float near, float far) {
   this->left = left;
   this->right = right;

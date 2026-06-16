@@ -8,6 +8,7 @@
 
 class OrthoCamera {
 public:
+  OrthoCamera();
   OrthoCamera(float left, float right, float bottom, float top, float near, float far);
 
   float left, right, bottom, top, near, far;
