@@ -2,6 +2,10 @@
 
 Coin::Coin() {}
 
-void Coin::draw(std::vector<std::vector<int>> coin_position) { shader.use(); }
+void Coin::draw(std::vector<std::array<int, 2>> coin_position) {
+  shader.use();
+}
 
-Coin::~Coin() { shader.deleteProgram(); }
+Coin::~Coin() {
+  shader.deleteProgram();
+}

@@ -32,7 +32,4 @@ void Game::draw() {
   snake.draw(core.snake);
 }
 
-Game::~Game() {
-  map.deleteSelf();
-  coin.deleteSelf();
-}
+Game::~Game() {}
