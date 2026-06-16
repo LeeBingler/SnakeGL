@@ -1,3 +1,4 @@
+#include "glm/detail/type_vec.hpp"
 #include <main/OrthoCamera.hpp>
 
 OrthoCamera::OrthoCamera() {
@@ -16,7 +17,8 @@ OrthoCamera::OrthoCamera(float left, float right, float bottom, float top, float
 }
 
 glm::mat4 OrthoCamera::getViewMatrix() const {
-  return glm::lookAt(eye, target, up);
+  return glm::lookAt(glm::vec3(position.x, position.y, 1.0), glm::vec3(position.x, position.y, 0.0),
+                     up);
 }
 
 glm::mat4 OrthoCamera::getProjectionMatrix() const {
@@ -27,12 +29,12 @@ glm::mat4 OrthoCamera::getViewProjectionMatrix() const {
   return getProjectionMatrix() * getViewMatrix();
 }
 
-void OrthoCamera::setTarget(glm::vec3 new_target) {
-  target = new_target;
+void OrthoCamera::setPosition(glm::vec2 new_position) {
+  position = new_position;
 }
 
-void OrthoCamera::setEye(glm::vec3 new_eye) {
-  eye = new_eye;
+void OrthoCamera::setPosition(float x, float y) {
+  position = glm::vec2(x, y);
 }
 
 glm::mat4 OrthoCamera::updateProjectionMatrix(float left, float right, float bottom, float top,

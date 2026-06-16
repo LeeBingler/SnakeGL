@@ -20,12 +20,11 @@ public:
   glm::mat4 updateProjectionMatrix(float left, float right, float bottom, float top, float near,
                                    float far);
 
-  void setTarget(glm::vec3 new_target);
-  void setEye(glm::vec3 new_Eye);
+  void setPosition(glm::vec2 new_position);
+  void setPosition(float x, float y);
 
 private:
-  glm::vec3 target{0.0, 0.0, 0.0};
-  glm::vec3 eye{0.0, 0.0, 1.0};
+  glm::vec2 position{0.0, 0.0};
   glm::vec3 up{0.0, 1.0, 0.0};
   glm::mat4 projection;
 };
