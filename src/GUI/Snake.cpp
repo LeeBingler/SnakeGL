@@ -1,5 +1,6 @@
 #include "glm/detail/type_vec.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "main/OrthoCamera.hpp"
 #include "main/Shader.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,12 +11,6 @@
 void Snake::setMatrix(GLFWwindow* window) {
   int width, height = 0;
   glfwGetWindowSize(window, &width, &height);
-
-  view = glm::mat4(1.0f);
-  view = glm::translate(view, glm::vec3(0.0f, static_cast<float>(height), -1.0f));
-
-  projection =
-      glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height), 0.1f, 100.0f);
 
   scale = glm::vec3(width / 15.0, height / 17.0, 1.0f);
 }
@@ -85,10 +80,12 @@ void Snake::checkNewNode(std::list<struct Snake_part>& snake_core) {
   }
 }
 
-void Snake::draw(std::list<struct Snake_part>& snake_core) {
+void Snake::draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera) {
   shader.use();
   checkNewNode(snake_core);
   update_matrices(snake_core);
+  view = camera.getViewMatrix();
+  projection = camera.getProjectionMatrix();
 
   for (auto& node : snake_gui) {
     shader.setMat4("model", node.model);

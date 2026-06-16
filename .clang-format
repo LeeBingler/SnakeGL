@@ -8,3 +8,5 @@ IncludeBlocks:       Preserve
 PointerAlignment: Left
 
 ColumnLimit: 100
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty

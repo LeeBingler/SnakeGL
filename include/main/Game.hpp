@@ -4,6 +4,7 @@
 #include <main/GUI/Map.hpp>
 #include <main/GUI/Coin.hpp>
 #include <main/GUI/Timer.hpp>
+#include <main/OrthoCamera.hpp>
 
 #include <main/Core/Core.hpp>
 
@@ -30,4 +31,5 @@ private:
   Game_state game_state;
   double intervale;
   double accumulative;
+  OrthoCamera camera;
 };

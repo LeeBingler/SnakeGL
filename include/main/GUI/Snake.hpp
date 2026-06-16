@@ -1,7 +1,8 @@
 #pragma once
 
-#include "glm/detail/type_vec.hpp"
+#include <glm/detail/type_vec.hpp>
 #include <main/Shader.hpp>
+#include <main/OrthoCamera.hpp>
 #include <list>
 
 #include <glad/glad.h>
@@ -38,7 +39,7 @@ public:
   Snake(GLFWwindow* window);
   ~Snake();
 
-  void draw(std::list<struct Snake_part>& snake_core);
+  void draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera);
   void update_matrices(std::list<struct Snake_part>& snake_core);
 
 private:

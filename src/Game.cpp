@@ -1,9 +1,17 @@
+#include "glm/detail/type_vec.hpp"
 #include "main/Core/Core.hpp"
 #include <main/Game.hpp>
 
 Game::Game(GLFWwindow* main_window)
     : map(), coin(), timer(), core(), snake(main_window), window(main_window), game_state(MENU),
-      intervale(1.0), accumulative(0.0) {}
+      intervale(1.0), accumulative(0.0) {
+
+  int width, height = 0;
+  glfwGetWindowSize(window, &width, &height);
+  camera.updateProjectionMatrix(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height),
+                                0.1f, 100.0f);
+  camera.setPosition(glm::vec2(0.0, -static_cast<float>(height)));
+}
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
@@ -29,7 +37,7 @@ void Game::update() {
 void Game::draw() {
   map.draw(core.map);
   coin.draw(core.coin_position);
-  snake.draw(core.snake);
+  snake.draw(core.snake, camera);
 }
 
 Game::~Game() {}
