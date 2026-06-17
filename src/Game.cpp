@@ -3,8 +3,8 @@
 #include <main/Game.hpp>
 
 Game::Game(GLFWwindow* main_window)
-    : map(), coin(), timer(), core(), snake(main_window), window(main_window), game_state(MENU),
-      intervale(1.0), accumulative(0.0) {
+    : core(), map(), coin(core.coin_position), timer(), snake(main_window), window(main_window),
+      game_state(MENU), intervale(1.0), accumulative(0.0) {
 
   int width, height = 0;
   glfwGetWindowSize(window, &width, &height);
@@ -36,7 +36,7 @@ void Game::update() {
 
 void Game::draw() {
   map.draw(core.map);
-  coin.draw(core.coin_position);
+  coin.draw(core.coin_position, camera);
   snake.draw(core.snake, camera);
 }
 

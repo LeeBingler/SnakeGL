@@ -22,10 +22,10 @@ public:
   void draw();
 
 private:
+  Core core;
   Map map;
   Coin coin;
   Timer timer;
-  Core core;
   Snake snake;
   GLFWwindow* window;
   Game_state game_state;
