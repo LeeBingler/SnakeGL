@@ -9,9 +9,9 @@ glm::vec3 Game::computeScale(GLFWwindow* window) {
 }
 
 Game::Game(GLFWwindow* main_window)
-    : core(), window(main_window), game_state(MENU),
-      scale_square_game(Game::computeScale(main_window)), intervale(1.0), accumulative(0.0),
-      camera(), timer(), map(), coin(core.coin_position, scale_square_game),
+    : core(), window(main_window), state(), scale_square_game(Game::computeScale(main_window)),
+      intervale(1.0), accumulative(0.0), camera(), timer(), map(),
+      coin(core.coin_position, scale_square_game),
       snake(scale_square_game, core.snake.front().position) {
 
   int width, height = 0;

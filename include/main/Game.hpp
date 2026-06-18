@@ -8,11 +8,10 @@
 #include <main/OrthoCamera.hpp>
 
 #include <main/Core/Core.hpp>
+#include <main/State.hpp>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-enum Game_state { MENU, IN_GAME, END };
 
 class Game {
 public:
@@ -25,7 +24,7 @@ public:
 private:
   Core core;
   GLFWwindow* window;
-  Game_state game_state;
+  State state;
 
   static glm::vec3 computeScale(GLFWwindow* window);
   glm::vec3 scale_square_game;
