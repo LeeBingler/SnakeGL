@@ -5,17 +5,17 @@ void Core::addNodeSnake() {
   Snake_part_t new_node = {.direction = tail.direction, .position = tail.position};
 
   switch (tail.direction) {
-  case LEFT:
+  case UP:
+    new_node.position[0] -= 1;
+    break;
+  case DOWN:
     new_node.position[0] += 1;
     break;
   case RIGHT:
-    new_node.position[0] -= 1;
-    break;
-  case UP:
-    new_node.position[1] += 1;
-    break;
-  case DOWN:
     new_node.position[1] -= 1;
+    break;
+  case LEFT:
+    new_node.position[1] += 1;
     break;
 
   default:
@@ -29,17 +29,17 @@ std::array<int, 2> getNewPosition(Direction_keys direction, std::array<int, 2> p
   std::array<int, 2> newPosition;
 
   switch (direction) {
-  case LEFT:
+  case UP:
     newPosition = {positionSnake[0] - 1, positionSnake[1]};
     break;
-  case RIGHT:
+  case DOWN:
     newPosition = {positionSnake[0] + 1, positionSnake[1]};
     break;
-  case UP:
-    newPosition = {positionSnake[0], positionSnake[1] - 1};
-    break;
-  case DOWN:
+  case RIGHT:
     newPosition = {positionSnake[0], positionSnake[1] + 1};
+    break;
+  case LEFT:
+    newPosition = {positionSnake[0], positionSnake[1] - 1};
     break;
 
   default:
