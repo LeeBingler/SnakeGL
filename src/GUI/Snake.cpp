@@ -8,13 +8,6 @@
 #include <main/GUI/Snake.hpp>
 #include <main/Core/Core.hpp>
 
-void Snake::setMatrix(GLFWwindow* window) {
-  int width, height = 0;
-  glfwGetWindowSize(window, &width, &height);
-
-  scale = glm::vec3(width / 15.0, height / 17.0, 1.0f);
-}
-
 Snake_node_t Snake::makeNewNode(float x, float y) {
   Snake_node_t node;
 
@@ -39,29 +32,26 @@ Snake_node_t Snake::makeNewNode(float x, float y) {
   return node;
 }
 
-Snake::Snake(GLFWwindow* window) {
-  setMatrix(window);
-  snake_gui.push_back(makeNewNode(0.0, 0.0));
+Snake::Snake(glm::vec3 scale_game, std::array<int, 2> position_head) {
+  scale = scale_game;
+  snake_gui.push_back(makeNewNode(position_head[0], position_head[1]));
 }
 
 void Snake::update_matrices(std::list<struct Snake_part>& snake_core) {
   std::list<Snake_part_t>::iterator it_core = snake_core.begin();
 
-  // update snake position
   for (auto& node_gui : snake_gui) {
     Snake_part_t& node_core = *it_core;
 
-    node_gui.translate.x = node_core.position[0];
-    node_gui.translate.y = -node_core.position[1];
+    // update snake position
+    node_gui.translate.y = node_core.position[0];
+    node_gui.translate.x = node_core.position[1];
 
+    // matrix update
+    node_gui.model = glm::mat4(1.0f);
+    node_gui.model = glm::scale(node_gui.model, scale);
+    node_gui.model = glm::translate(node_gui.model, node_gui.translate);
     it_core++;
-  }
-
-  // matrix update
-  for (auto& node : snake_gui) {
-    node.model = glm::mat4(1.0f);
-    node.model = glm::scale(node.model, scale);
-    node.model = glm::translate(node.model, node.translate);
   }
 }
 
@@ -75,7 +65,7 @@ void Snake::checkNewNode(std::list<struct Snake_part>& snake_core) {
   auto it_core = std::next(snake_core.begin(), gui_size);
 
   for (; it_core != snake_core.end(); it_core++) {
-    Snake_node_t new_node = makeNewNode(it_core->position[0], -it_core->position[1]);
+    Snake_node_t new_node = makeNewNode(it_core->position[1], it_core->position[0]);
     snake_gui.push_back(new_node);
   }
 }

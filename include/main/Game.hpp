@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glm/glm.hpp>
 #include <main/GUI/Snake.hpp>
 #include <main/GUI/Map.hpp>
 #include <main/GUI/Coin.hpp>
@@ -23,13 +24,16 @@ public:
 
 private:
   Core core;
-  Map map;
-  Coin coin;
-  Timer timer;
-  Snake snake;
   GLFWwindow* window;
   Game_state game_state;
+
+  static glm::vec3 computeScale(GLFWwindow* window);
+  glm::vec3 scale_square_game;
   double intervale;
   double accumulative;
   OrthoCamera camera;
+  Timer timer;
+  Map map;
+  Coin coin;
+  Snake snake;
 };

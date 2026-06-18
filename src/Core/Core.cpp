@@ -53,7 +53,7 @@ void Core::updateCoin() {
 
 void Core::update() {
   updateSnake();
-  // updateCoin();
+  updateCoin();
 
   for (int y = 0; y < height_map; y++) {
     for (int x = 0; x < width_map; x++) {

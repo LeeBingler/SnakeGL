@@ -2,15 +2,23 @@
 #include "main/Core/Core.hpp"
 #include <main/Game.hpp>
 
+glm::vec3 Game::computeScale(GLFWwindow* window) {
+  int width, height = 0;
+  glfwGetWindowSize(window, &width, &height);
+  return glm::vec3(width / 15.0, height / 17.0, 1.0f);
+}
+
 Game::Game(GLFWwindow* main_window)
-    : core(), map(), coin(core.coin_position), timer(), snake(main_window), window(main_window),
-      game_state(MENU), intervale(1.0), accumulative(0.0) {
+    : core(), window(main_window), game_state(MENU),
+      scale_square_game(Game::computeScale(main_window)), intervale(1.0), accumulative(0.0),
+      camera(), timer(), map(), coin(core.coin_position, scale_square_game),
+      snake(scale_square_game, core.snake.front().position) {
 
   int width, height = 0;
   glfwGetWindowSize(window, &width, &height);
-  camera.updateProjectionMatrix(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height),
+
+  camera.updateProjectionMatrix(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f,
                                 0.1f, 100.0f);
-  camera.setPosition(glm::vec2(0.0, -static_cast<float>(height)));
 }
 
 void Game::processInput() {

@@ -36,7 +36,7 @@ public:
       1, 2, 3  // second Triangle
   };
 
-  Snake(GLFWwindow* window);
+  Snake(glm::vec3 scale_game, std::array<int, 2> position_head);
   ~Snake();
 
   void draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera);
