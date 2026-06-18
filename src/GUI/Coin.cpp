@@ -1,4 +1,3 @@
-#include <iostream>
 #include <list>
 #include <main/GUI/Coin.hpp>
 
