@@ -8,7 +8,6 @@
 #include <main/OrthoCamera.hpp>
 
 #include <main/Core/Core.hpp>
-#include <main/State.hpp>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -24,7 +23,6 @@ public:
 private:
   Core core;
   GLFWwindow* window;
-  State state;
 
   static glm::vec3 computeScale(GLFWwindow* window);
   glm::vec3 scale_square_game;
