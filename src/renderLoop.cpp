@@ -1,3 +1,4 @@
+#include "main/Window.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -7,10 +8,9 @@
 #include <main/States/ExitState.hpp>
 
 // Render loop
-void renderLoop(GLFWwindow* window) {
-  GameState* game = GameState::get();
-  game->setGame(window);
-
+void renderLoop() {
+  Window* windowClass = Window::get();
+  GLFWwindow* window = windowClass->getWindow();
   StateManager* stateManager = StateManager::get();
   State* currentState = stateManager->getCurrentState();
 

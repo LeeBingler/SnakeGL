@@ -2,6 +2,10 @@
 
 Map::Map() {}
 
-void Map::draw(std::vector<std::vector<int>> map) { shader.use(); }
+void Map::draw(std::vector<std::vector<int>> map) {
+  shader.use();
+}
 
-Map::~Map() { shader.deleteProgram(); }
+void Map::destroyAll() {
+  shader.deleteProgram();
+}

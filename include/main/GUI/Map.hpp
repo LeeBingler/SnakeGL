@@ -8,6 +8,6 @@ public:
   Shader shader = Shader("resources/shaders/Map/vertex.vs", "resources/shaders/Map/fragment.fs");
 
   Map();
-  ~Map();
+  void destroyAll();
   void draw(std::vector<std::vector<int>> map);
 };

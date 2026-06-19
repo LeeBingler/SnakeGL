@@ -25,6 +25,7 @@ set(SRC_CPP
     src/Utils/Shader.cpp
     src/Utils/Texture2D.cpp
     src/Utils/OrthoCamera.cpp
+    src/Utils/Window.cpp
     src/GUI/Map.cpp
     src/GUI/Snake.cpp
     src/GUI/Coin.cpp

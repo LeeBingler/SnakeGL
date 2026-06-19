@@ -17,8 +17,8 @@ typedef struct Coin_node {
 class Coin {
 public:
   Coin(std::vector<std::array<int, 2>> coin_position, glm::vec3 scale_game);
-  ~Coin();
   void draw(std::vector<std::array<int, 2>> coin_position, OrthoCamera camera);
+  void destroyAll();
 
 private:
   Shader shader = Shader("resources/shaders/Coin/vertex.vs", "resources/shaders/Coin/fragment.fs");

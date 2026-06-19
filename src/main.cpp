@@ -2,12 +2,9 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <main/renderLoop.hpp>
+#include <main/Window.hpp>
 
 // behing call when the window is resize
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-  glViewport(0, 0, width, height);
-  (void)window;
-}
 
 // GLFW init
 int initGLFW() {
@@ -22,26 +19,16 @@ int initGLFW() {
   return 0;
 }
 
-// GLFW window creati
-GLFWwindow* createWindow() {
-  GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-  if (window == NULL) {
-    return NULL;
-  }
-  glfwMakeContextCurrent(window);
-  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-  return window;
-}
-
 int main() {
   if (initGLFW()) {
     std::cout << "Failed to initialize GLFW" << std::endl;
     return -1;
   }
 
-  GLFWwindow* window = createWindow();
-  if (window == NULL) {
+  Window* window = Window::get();
+  window->createWindow();
+
+  if (window->getWindow() == NULL) {
     std::cout << "Failed to create GLFW window" << std::endl;
     glfwTerminate();
     return -2;
@@ -55,7 +42,7 @@ int main() {
   }
 
   glViewport(0, 0, 800, 600);
-  renderLoop(window);
+  renderLoop();
 
   glfwTerminate();
   return 0;

@@ -37,7 +37,7 @@ public:
   };
 
   Snake(glm::vec3 scale_game, std::array<int, 2> position_head);
-  ~Snake();
+  void destroyAll();
 
   void draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera);
   void update_matrices(std::list<struct Snake_part>& snake_core);

@@ -86,9 +86,8 @@ void Snake::draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera) 
   }
 }
 
-Snake::~Snake() {
+void Snake::destroyAll() {
   shader.deleteProgram();
-
   for (auto& node : snake_gui) {
     glDeleteVertexArrays(1, &node.VAO);
     glDeleteBuffers(1, &node.VBO);

@@ -19,13 +19,9 @@ public:
   void update();
   void render();
 
-  void setGame(GLFWwindow* window) {
-    game.emplace(window);
-  };
-
-private:
   std::optional<Game> game;
 
+private:
   GameState();
   ~GameState();
 };

@@ -8,7 +8,7 @@ Coin::Coin(std::vector<std::array<int, 2>> coin_position, glm::vec3 scale_game) 
   }
 }
 
-Coin::~Coin() {
+void Coin::destroyAll() {
   shader.deleteProgram();
 
   for (auto& node : coin_gui) {

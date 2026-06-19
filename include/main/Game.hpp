@@ -15,10 +15,10 @@
 class Game {
 public:
   Game(GLFWwindow* window);
-  ~Game();
   void update();
   void processInput();
   void draw();
+  void destroyAll();
 
 private:
   Core core;

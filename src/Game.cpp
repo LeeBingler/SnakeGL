@@ -48,4 +48,8 @@ void Game::draw() {
   snake.draw(core.snake, camera);
 }
 
-Game::~Game() {}
+void Game::destroyAll() {
+  map.destroyAll();
+  coin.destroyAll();
+  snake.destroyAll();
+}
