@@ -29,6 +29,10 @@ set(SRC_CPP
     src/GUI/Snake.cpp
     src/GUI/Coin.cpp
     src/GUI/Timer.cpp
+    src/GUI/States/GameState.cpp
+    src/GUI/States/MenuState.cpp
+    src/GUI/States/ExitState.cpp
+    src/GUI/States/StateManager.cpp
     src/Core/Core.cpp
     src/Core/CoreSnake.cpp
 )

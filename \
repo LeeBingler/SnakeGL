@@ -8,14 +8,11 @@
 
 // Render loop
 void renderLoop(GLFWwindow* window) {
-  GameState* game = GameState::get();
-  game->setGame(window);
-
+  Game myGame = Game(window);
   StateManager* stateManager = StateManager::get();
   State* currentState = stateManager->getCurrentState();
 
   stateManager->setNextState(GameState::get());
-  stateManager->changeState();
 
   // render loop
   while (currentState != ExitState::get()) {
