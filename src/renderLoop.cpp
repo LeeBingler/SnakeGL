@@ -9,8 +9,7 @@
 
 // Render loop
 void renderLoop() {
-  Window* windowClass = Window::get();
-  GLFWwindow* window = windowClass->getWindow();
+  GLFWwindow* window = Window::get()->getWindow();
   StateManager* stateManager = StateManager::get();
   State* currentState = stateManager->getCurrentState();
 
