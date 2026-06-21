@@ -4,8 +4,6 @@
 #include <main/renderLoop.hpp>
 #include <main/Window.hpp>
 
-// behing call when the window is resize
-
 // GLFW init
 int initGLFW() {
   if (!glfwInit()) {
@@ -17,6 +15,12 @@ int initGLFW() {
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   return 0;
+}
+
+void enablerOpenGL() {
+  // enable blend for letter mix
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 int main() {
@@ -40,6 +44,7 @@ int main() {
     glfwTerminate();
     return -3;
   }
+  enablerOpenGL();
 
   glViewport(0, 0, 800, 600);
   renderLoop();
