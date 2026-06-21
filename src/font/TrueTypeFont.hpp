@@ -24,7 +24,7 @@ class TrueTypeFont {
 public:
   void RenderText(Shader& shader, std::string text, float x, float y, float scale, glm::vec3 color);
   TrueTypeFont(std::string fontPath);
-  ~TrueTypeFont();
+  void destroyAll();
 
 private:
   unsigned int nbCharList{128};

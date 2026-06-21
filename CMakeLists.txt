@@ -35,6 +35,7 @@ set(SRC_CPP
     src/GUI/States/MenuState.cpp
     src/GUI/States/ExitState.cpp
     src/GUI/States/StateManager.cpp
+    src/GUI/Button.cpp
     src/Core/Core.cpp
     src/Core/CoreSnake.cpp
 )

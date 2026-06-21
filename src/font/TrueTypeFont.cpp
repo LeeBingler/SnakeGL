@@ -60,7 +60,7 @@ TrueTypeFont::TrueTypeFont(std::string fontPath) {
   glBindVertexArray(0);
 }
 
-TrueTypeFont::~TrueTypeFont() {
+void TrueTypeFont::destroyAll() {
   for (auto& [c, character] : Characters) {
     glDeleteTextures(1, &character.textureID);
   }

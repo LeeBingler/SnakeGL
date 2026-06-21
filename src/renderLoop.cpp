@@ -1,10 +1,11 @@
+#include "main/States/GameState.hpp"
 #include <main/Window.hpp>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <main/Game.hpp>
 #include <main/StateManager.hpp>
-#include <main/States/GameState.hpp>
+#include <main/States/MenuState.hpp>
 #include <main/States/ExitState.hpp>
 
 // Render loop
@@ -13,7 +14,7 @@ void renderLoop() {
   StateManager* stateManager = StateManager::get();
   State* currentState = stateManager->getCurrentState();
 
-  stateManager->setNextState(GameState::get());
+  stateManager->setNextState(MenuState::get());
   stateManager->changeState();
 
   // render loop
