@@ -24,6 +24,23 @@ Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+  const float WIDTH_BTN = 160.0f;
+  const float HEIGHT_BTN = 50.0f;
+
+  float left = x;
+  float right = x + WIDTH_BTN;
+  float bottom = y;
+  float top = y + HEIGHT_BTN;
+
+  float bgVertices[12] = {
+      left,  top,    0.0f, // top-left
+      right, top,    0.0f, // top-right
+      right, bottom, 0.0f, // bottom-right
+      left,  bottom, 0.0f  // bottom-left
+  };
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(bgVertices), bgVertices);
+
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
@@ -41,38 +58,20 @@ void Button::draw() {
   Size size = Window::get()->size;
   projection = glm::ortho(0.0f, (float)size.width, 0.0f, (float)size.height);
 
-  const float WIDTH_BTN = 160.0f;
-  const float HEIGHT_BTN = 50.0f;
-  const float PADDING = 10.0f;
-
-  // In bottom-left origin: y is bottom, y+HEIGHT is top
-  float left = x;
-  float right = x + WIDTH_BTN;
-  float bottom = y; // y is the TOP, so bottom is y - height
-  float top = y + HEIGHT_BTN;
-
-  float bgVertices[12] = {
-      left,  top,    0.0f, // top-left
-      right, top,    0.0f, // top-right
-      right, bottom, 0.0f, // bottom-right
-      left,  bottom, 0.0f  // bottom-left
-  };
-
   // draw background FIRST
   shaderBg.use();
   shaderBg.setMat4("projection", projection);
   shaderBg.setVec3("bgColor", glm::vec3(0.1f, 0.1f, 0.1f));
 
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(bgVertices), bgVertices);
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
   // draw text ON TOP, centered inside the button
   if (font) {
     shaderFont.use();
+    const float PADDING = 10.0f;
     float textX = x + PADDING;
-    float textY = bottom + 5.0f; // vertically centered on baseline
+    float textY = y + 5.0f; // vertically centered on baseline
     font->RenderText(shaderFont, string, textX, textY, scale, glm::vec3(1.0f, 1.0f, 1.0f));
   }
 }
