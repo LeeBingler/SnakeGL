@@ -38,7 +38,8 @@ void Button::update() {
 }
 
 void Button::draw() {
-  projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
+  Size size = Window::get()->size;
+  projection = glm::ortho(0.0f, (float)size.width, 0.0f, (float)size.height);
 
   const float WIDTH_BTN = 160.0f;
   const float HEIGHT_BTN = 50.0f;
