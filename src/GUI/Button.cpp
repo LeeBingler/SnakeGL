@@ -38,43 +38,40 @@ void Button::update() {
 }
 
 void Button::draw() {
-  projection = glm::ortho(0.0f, static_cast<float>(800), 0.0f, static_cast<float>(600));
+  projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
-  // draw background
-  shaderBg.use();
-  shaderBg.setMat4("projection", projection);
-  shaderBg.setVec3("bgColor", glm::vec3(0.2f, 0.2f, 0.8f));
+  const float WIDTH_BTN = 160.0f;
+  const float HEIGHT_BTN = 50.0f;
+  const float PADDING = 10.0f;
 
-  // update VBO for each character
-  const float WIDTH_BTN = 150.0f;
-  const float HEIGHT_BTN = 40.0f;
-  const float BOTTOM = y - 5.0f;
-  float vertices[12] = {
-      x + WIDTH_BTN,
-      y + HEIGHT_BTN,
-      0.0f, // top-left
-      x + WIDTH_BTN,
-      BOTTOM,
-      0.0f, // bottom-right
-      x,
-      BOTTOM,
-      0.0f, // bottom-left
-      x,
-      y + HEIGHT_BTN,
-      0.0f // top-right
+  // In bottom-left origin: y is bottom, y+HEIGHT is top
+  float left = x;
+  float right = x + WIDTH_BTN;
+  float bottom = y; // y is the TOP, so bottom is y - height
+  float top = y + HEIGHT_BTN;
+
+  float bgVertices[12] = {
+      left,  top,    0.0f, // top-left
+      right, top,    0.0f, // top-right
+      right, bottom, 0.0f, // bottom-right
+      left,  bottom, 0.0f  // bottom-left
   };
 
-  // update content of VBO memory
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+  // draw background FIRST
+  shaderBg.use();
+  shaderBg.setMat4("projection", projection);
+  shaderBg.setVec3("bgColor", glm::vec3(0.1f, 0.1f, 0.1f));
 
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(bgVertices), bgVertices);
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-  // draw font
+  // draw text ON TOP, centered inside the button
   if (font) {
     shaderFont.use();
-    shaderFont.setMat4("projection", projection);
-    font->RenderText(shaderFont, string, x, y, scale, glm::vec3(1.0, 1.0, 1.0));
+    float textX = x + PADDING;
+    float textY = bottom + 5.0f; // vertically centered on baseline
+    font->RenderText(shaderFont, string, textX, textY, scale, glm::vec3(1.0f, 1.0f, 1.0f));
   }
 }
