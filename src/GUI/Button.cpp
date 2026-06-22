@@ -61,7 +61,7 @@ void Button::draw() {
   // draw background FIRST
   shaderBg.use();
   shaderBg.setMat4("projection", projection);
-  shaderBg.setVec3("bgColor", glm::vec3(0.1f, 0.1f, 0.1f));
+  shaderBg.setVec4("bgColor", glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
