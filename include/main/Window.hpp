@@ -8,6 +8,11 @@ struct Cursor {
   double yPos = 0.0f;
 };
 
+struct Size {
+  int width = 0;
+  int height = 0;
+};
+
 class Window {
 public:
   static Window* get() {
@@ -27,11 +32,12 @@ public:
   }
 
   ~Window();
-  void createWindow();
+  void createWindow(int width, int height);
   static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 private:
   GLFWwindow* window;
   static Window sWindow;
   Cursor cursor = {0.0, 0.0};
+  Size size = {0, 0};
 };

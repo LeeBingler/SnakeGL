@@ -13,11 +13,14 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
   Window::get()->setCursor(xpos, ypos);
 }
 
-void Window::createWindow() {
-  window = glfwCreateWindow(800, 600, "Snake GL", NULL, NULL);
+void Window::createWindow(int width, int height) {
+  window = glfwCreateWindow(width, height, "Snake GL", NULL, NULL);
   if (window == NULL) {
     return;
   }
+  size.width = width;
+  size.height = height;
+
   glfwMakeContextCurrent(window);
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
