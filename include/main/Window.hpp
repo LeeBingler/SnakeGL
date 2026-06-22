@@ -31,6 +31,8 @@ public:
     cursor.yPos = y;
   }
 
+  Size size = {0, 0};
+
   ~Window();
   void createWindow(int width, int height);
   static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -39,5 +41,4 @@ private:
   GLFWwindow* window;
   static Window sWindow;
   Cursor cursor = {0.0, 0.0};
-  Size size = {0, 0};
 };

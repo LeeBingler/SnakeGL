@@ -30,7 +30,7 @@ int main() {
   }
 
   Window* window = Window::get();
-  window->createWindow();
+  window->createWindow(800, 600);
 
   if (window->getWindow() == NULL) {
     std::cout << "Failed to create GLFW window" << std::endl;
@@ -46,7 +46,7 @@ int main() {
   }
   enablerOpenGL();
 
-  glViewport(0, 0, 800, 600);
+  glViewport(0, 0, window->size.width, window->size.height);
   renderLoop();
 
   glfwTerminate();
