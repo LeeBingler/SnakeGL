@@ -15,14 +15,13 @@ private:
   // Font
   std::string string;
   TrueTypeFont* font;
-  int x, y, z;
-  float scale;
+  float x, y, scale;
 
   // Shaders
   Shader shaderFont =
       Shader("resources/shaders/font/vertex.vs", "resources/shaders/font/fragment.fs");
   Shader shaderBg =
-      Shader("resources/shaders/Snake/vertex.vs", "resources/shaders/Snake/fragment.fs");
+      Shader("resources/shaders/Button/vertex.vs", "resources/shaders/Button/fragment.fs");
 
   // data forto draw rectangle
   float vertices[12] = {
@@ -38,7 +37,6 @@ private:
 
   // Model
   unsigned int VAO, VBO, EBO;
-  glm::mat4 model;
   glm::mat4 projection;
   glm::mat4 view;
 };

@@ -23,7 +23,6 @@ void Window::createWindow() {
 
   // Track mouse movement
   glfwSetCursorPosCallback(window, mouse_callback);
-  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 Window::~Window() {

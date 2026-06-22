@@ -1,3 +1,5 @@
+#include "glm/detail/type_vec.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "main/Window.hpp"
 #include <iostream>
 #include <main/GUI/Button.hpp>
@@ -27,8 +29,6 @@ Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
 
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
-
-  model = glm::mat4(1.0f);
 }
 
 void Button::update() {
@@ -41,12 +41,40 @@ void Button::draw() {
   projection = glm::ortho(0.0f, static_cast<float>(800), 0.0f, static_cast<float>(600));
 
   // draw background
-  shaderFont.use();
-  shaderFont.setMat4("projection", projection);
+  shaderBg.use();
+  shaderBg.setMat4("projection", projection);
+  shaderBg.setVec3("bgColor", glm::vec3(0.2f, 0.2f, 0.8f));
+
+  // update VBO for each character
+  const float WIDTH_BTN = 150.0f;
+  const float HEIGHT_BTN = 40.0f;
+  const float BOTTOM = y - 5.0f;
+  float vertices[12] = {
+      x + WIDTH_BTN,
+      y + HEIGHT_BTN,
+      0.0f, // top-left
+      x + WIDTH_BTN,
+      BOTTOM,
+      0.0f, // bottom-right
+      x,
+      BOTTOM,
+      0.0f, // bottom-left
+      x,
+      y + HEIGHT_BTN,
+      0.0f // top-right
+  };
+
+  // update content of VBO memory
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
   // draw font
-  if (font)
+  if (font) {
+    shaderFont.use();
+    shaderFont.setMat4("projection", projection);
     font->RenderText(shaderFont, string, x, y, scale, glm::vec3(1.0, 1.0, 1.0));
+  }
 }

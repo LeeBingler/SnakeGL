@@ -20,9 +20,9 @@ bool MenuState::enter() {
   font.emplace("resources/font/aileron.regular.otf");
 
   TrueTypeFont* fontPtr = &font.value();
-  play.emplace("PLAY", fontPtr, 400.0, 300.0, 1.0);
-  level.emplace("LEVEL", fontPtr, 400.0, 200.0, 1.0);
-  quit.emplace("QUIT", fontPtr, 400.0, 100.0, 1.0);
+  play.emplace(" PLAY", fontPtr, 325.0, 300.0, 1.0);
+  level.emplace("LEVEL", fontPtr, 325.0, 200.0, 1.0);
+  quit.emplace(" QUIT", fontPtr, 325.0, 100.0, 1.0);
 
   return true;
 }
