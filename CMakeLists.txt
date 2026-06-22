@@ -27,6 +27,7 @@ set(SRC_CPP
     src/Utils/Texture2D.cpp
     src/Utils/OrthoCamera.cpp
     src/Utils/Window.cpp
+    src/Utils/StateManager.cpp
     src/GUI/Map.cpp
     src/GUI/Snake.cpp
     src/GUI/Coin.cpp
@@ -34,7 +35,6 @@ set(SRC_CPP
     src/GUI/States/GameState.cpp
     src/GUI/States/MenuState.cpp
     src/GUI/States/ExitState.cpp
-    src/GUI/States/StateManager.cpp
     src/GUI/Button.cpp
     src/Core/Core.cpp
     src/Core/CoreSnake.cpp
