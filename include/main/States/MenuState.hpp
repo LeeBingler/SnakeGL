@@ -4,9 +4,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <main/States/State.hpp>
+#include "../../../src/Utils/SpriteRenderer.hpp"
+#include "main/Shader.hpp"
 
 #include <main/GUI/Button.hpp>
+#include <main/Texture2D.hpp>
 #include <optional>
+#include <list>
 
 class MenuState : public State {
 public:
@@ -28,6 +32,10 @@ private:
   std::optional<TrueTypeFont> font;
   glm::vec3 colorText = glm::vec3(1.0, 1.0, 1.0);
   glm::vec3 colorBg = glm::vec3(0.0, 0.0, 0.0);
+
+  std::optional<Shader> shaderSpriteRenderer;
+  std::optional<SpriteRenderer> spriteRenderer;
+  std::optional<std::list<Texture2D>> texturesButtons;
 
   std::optional<Button> play;
   std::optional<Button> level;

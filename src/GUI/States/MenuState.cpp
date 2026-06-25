@@ -1,4 +1,4 @@
-#include "main/GUI/Button.hpp"
+#include <main/GUI/Button.hpp>
 #include <iostream>
 #include <main/States/MenuState.hpp>
 
@@ -17,6 +17,11 @@ MenuState* MenuState::get() {
 }
 
 bool MenuState::enter() {
+  shaderSpriteRenderer.emplace("resources/shaders/Sprite/vertex.vs",
+                               "resources/shaders/Sprite/fragment.fs");
+  if (shaderSpriteRenderer)
+    spriteRenderer.emplace(*shaderSpriteRenderer);
+
   font.emplace("resources/font/aileron.regular.otf");
 
   TrueTypeFont* fontPtr = &font.value();
@@ -28,6 +33,12 @@ bool MenuState::enter() {
 }
 
 bool MenuState::exit() {
+  if (spriteRenderer)
+    spriteRenderer->destroyAll();
+
+  if (shaderSpriteRenderer)
+    shaderSpriteRenderer->deleteProgram();
+
   if (font)
     font->destroyAll();
 

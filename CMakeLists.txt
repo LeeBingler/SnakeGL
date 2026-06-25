@@ -28,6 +28,7 @@ set(SRC_CPP
     src/Utils/OrthoCamera.cpp
     src/Utils/Window.cpp
     src/Utils/StateManager.cpp
+    src/Utils/SpriteRenderer.cpp
     src/GUI/Map.cpp
     src/GUI/Snake.cpp
     src/GUI/Coin.cpp
