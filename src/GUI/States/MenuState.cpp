@@ -17,6 +17,11 @@ MenuState* MenuState::get() {
 }
 
 bool MenuState::enter() {
+  texturesButtons.emplace();
+  texturesButtons->push_back(Texture2D("resources/sprite/play_button.png"));
+  texturesButtons->push_back(Texture2D("resources/sprite/level_button.png"));
+  texturesButtons->push_back(Texture2D("resources/sprite/quit_button.png"));
+
   shaderSpriteRenderer.emplace("resources/shaders/Sprite/vertex.vs",
                                "resources/shaders/Sprite/fragment.fs");
   if (shaderSpriteRenderer)
@@ -33,6 +38,12 @@ bool MenuState::enter() {
 }
 
 bool MenuState::exit() {
+  if (texturesButtons) {
+    for (auto& e : *texturesButtons) {
+      e.deleteTexture();
+    }
+  }
+
   if (spriteRenderer)
     spriteRenderer->destroyAll();
 
