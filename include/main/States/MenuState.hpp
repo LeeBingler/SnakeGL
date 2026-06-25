@@ -16,12 +16,12 @@ class MenuState : public State {
 public:
   static MenuState* get();
 
-  bool enter();
-  bool exit();
+  bool enter() override;
+  bool exit() override;
 
-  void handleEvent(GLFWwindow* window);
-  void update();
-  void render();
+  void handleEvent(GLFWwindow* window) override;
+  void update() override;
+  void render() override;
 
 private:
   static MenuState sMenuState;
@@ -36,6 +36,7 @@ private:
   std::optional<Shader> shaderSpriteRenderer;
   std::optional<SpriteRenderer> spriteRenderer;
   std::optional<std::list<Texture2D>> texturesButtons;
+  glm::mat4 projection{1.0};
 
   std::optional<Button> play;
   std::optional<Button> level;

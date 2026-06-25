@@ -11,10 +11,15 @@ void SpriteRenderer::destroyAll() {
 void SpriteRenderer::initRenderData() {
   // configure VAO/VBO
   unsigned int VBO;
-  float vertices[] = {// pos      // tex
-                      0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-
-                      0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f};
+  float vertices[] = {
+      // pos                // tex
+      0.0f, 1.0f, 0.0f, 1.0f, // 1
+      1.0f, 0.0f, 1.0f, 0.0f, // 2
+      0.0f, 0.0f, 0.0f, 0.0f, // 3
+      0.0f, 1.0f, 0.0f, 1.0f, // 4
+      1.0f, 1.0f, 1.0f, 1.0f, // 5
+      1.0f, 0.0f, 1.0f, 0.0f  // 6
+  };
 
   glGenVertexArrays(1, &this->quadVAO);
   glGenBuffers(1, &VBO);

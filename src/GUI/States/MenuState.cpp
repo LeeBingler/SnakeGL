@@ -22,8 +22,23 @@ bool MenuState::enter() {
   texturesButtons->push_back(Texture2D("resources/sprite/level_button.png"));
   texturesButtons->push_back(Texture2D("resources/sprite/quit_button.png"));
 
+  for (auto& texture : *texturesButtons) {
+    texture.setParameter(GL_TEXTURE_WRAP_S, GL_REPEAT);
+    texture.setParameter(GL_TEXTURE_WRAP_T, GL_REPEAT);
+    texture.setParameter(GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    texture.setParameter(GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    texture.loadTexture(GL_RGB, GL_RGBA, GL_UNSIGNED_BYTE);
+  }
+
+  Size size = Window::get()->size;
+  projection =
+      glm::ortho(0.0f, static_cast<float>(size.width), 0.0f, static_cast<float>(size.height));
+
   shaderSpriteRenderer.emplace("resources/shaders/Sprite/vertex.vs",
                                "resources/shaders/Sprite/fragment.fs");
+  shaderSpriteRenderer->use();
+  shaderSpriteRenderer->setMat4("projection", projection);
+  shaderSpriteRenderer->setInt("image", 0);
   if (shaderSpriteRenderer)
     spriteRenderer.emplace(*shaderSpriteRenderer);
 
@@ -82,6 +97,14 @@ void MenuState::update() {
 }
 
 void MenuState::render() {
+  int i = 0;
+  for (auto& texture : *texturesButtons) {
+    if (i == 0) {
+      spriteRenderer->drawSprite(texture, glm::vec2(10.0f, 300.0f), glm::vec2(300.0f, 100.0f));
+    }
+    ++i;
+  }
+
   if (play)
     play->draw();
   if (level)
