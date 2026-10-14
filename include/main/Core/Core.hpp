@@ -26,8 +26,8 @@ public:
   void processInput(Direction_keys new_direction);
 
 private:
-  void updateHead(Snake_part_t& node, std::array<int, 2> positionSnake);
-  void updateSnake();
+  bool updateHead(Snake_part_t& node, std::array<int, 2> positionSnake);
+  bool updateSnake();
   void addNodeSnake();
 
   void updateCoin();

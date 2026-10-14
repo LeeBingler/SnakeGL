@@ -52,7 +52,11 @@ void Core::updateCoin() {
 }
 
 void Core::update() {
-  updateSnake();
+  if (!updateSnake()) {
+    std::cout << "end game : " << Core::score << std::endl;
+    return;
+  }
+    
   updateCoin();
 
   for (int y = 0; y < height_map; y++) {

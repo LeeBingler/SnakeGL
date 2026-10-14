@@ -49,7 +49,7 @@ std::array<int, 2> getNewPosition(Direction_keys direction, std::array<int, 2> p
   return newPosition;
 }
 
-void Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
+bool Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
   std::array<int, 2> newPosition = getNewPosition(wanted_direction, positionSnake);
 
   // Check if the head is trying to move on a node
@@ -63,17 +63,28 @@ void Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
     }
   }
 
+  // Check if the snake is oob
+  if (newPosition[0] < 0 || newPosition[0] >= Core::map.size())
+    return false;
+
+  if (newPosition[1] < 0 || newPosition[1] >= Core::map[0].size())
+    return false;
+
   // if the newPosition is a coin, then add a node
-  if (map[newPosition[0]][newPosition[1]] == 2)
+  if (map[newPosition[0]][newPosition[1]] == 2) {
     addNodeSnake();
+    score++;
+  }
 
   map[newPosition[0]][newPosition[1]] = 1;
   map[positionSnake[0]][positionSnake[1]] = 0;
   head.position = newPosition;
   head.direction = wanted_direction;
+
+  return true;
 }
 
-void Core::updateSnake() {
+bool Core::updateSnake() {
   std::array<int, 2> prevPosition;
   Direction_keys prevDirection;
 
@@ -83,7 +94,8 @@ void Core::updateSnake() {
     Direction_keys directionSnake = node.direction;
 
     if (it == snake.begin()) {
-      updateHead(node, positionSnake);
+      if (!updateHead(node, positionSnake))
+        return false;
       directionSnake = node.direction;
     } else {
       map[prevPosition[0]][prevPosition[1]] = 1;
@@ -95,4 +107,6 @@ void Core::updateSnake() {
     prevPosition = positionSnake;
     prevDirection = directionSnake;
   }
+
+  return true;
 }
