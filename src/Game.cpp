@@ -22,13 +22,13 @@ Game::Game(GLFWwindow* main_window)
 }
 
 void Game::processInput() {
-  if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+  if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     core.processInput(UP);
-  else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     core.processInput(RIGHT);
-  else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     core.processInput(DOWN);
-  else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     core.processInput(LEFT);
 }
 
