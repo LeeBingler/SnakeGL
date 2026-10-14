@@ -14,7 +14,7 @@ void renderLoop() {
   StateManager* stateManager = StateManager::get();
   State* currentState = stateManager->getCurrentState();
 
-  stateManager->setNextState(MenuState::get());
+  stateManager->setNextState(GameState::get());
   stateManager->changeState();
 
   // render loop
