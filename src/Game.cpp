@@ -19,7 +19,10 @@ Game::Game(GLFWwindow* main_window)
 
   camera.updateProjectionMatrix(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f,
                                 0.1f, 100.0f);
-  camera.setPosition(scale_square_game.x * -0.5, scale_square_game.y * -0.5);
+
+  double offset_x = (width - core.width_map * scale_square_game.x) / 2;
+
+  camera.setPosition(scale_square_game.x * -0.5 - offset_x, scale_square_game.y * -0.5);
 }
 
 void Game::processInput() {
