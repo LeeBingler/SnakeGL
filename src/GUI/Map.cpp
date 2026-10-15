@@ -23,8 +23,9 @@ Map::Map(glm::vec3 scale_game, std::vector<std::vector<int>>& map) : map(map) {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
 
-  double width = scale_game.x * map[0].size();
-  double height = scale_game.y * map.size();
+  size_map = glm::vec2(map[0].size(), map.size());
+  double width = scale_game.x * size_map[0];
+  double height = scale_game.y * size_map[1];
 
   model = glm::mat4(1.0f);
   model = glm::translate(
@@ -41,6 +42,7 @@ void Map::draw(OrthoCamera& camera) {
   shader.setMat4("model", model);
   shader.setMat4("view", view);
   shader.setMat4("projection", projection);
+  shader.setVec2("size_map", size_map);
   glBindVertexArray(VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "glm/detail/type_vec.hpp"
 #include <vector>
 #include <main/Shader.hpp>
 #include <main/OrthoCamera.hpp>
@@ -7,6 +8,7 @@
 class Map {
 public:
   std::vector<std::vector<int>>& map;
+  glm::vec2 size_map;
 
   Shader shader = Shader("resources/shaders/Map/vertex.vs", "resources/shaders/Map/fragment.fs");
 
