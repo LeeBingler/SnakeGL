@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(SnakeGL LANGUAGES C CXX)
+project(snakeGL LANGUAGES C CXX)
 
 # ── Standards ────────────────────────────────────────────────────────────────
 set(CMAKE_C_STANDARD   11)

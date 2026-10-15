@@ -10,24 +10,29 @@ glm::vec3 Game::computeScale(GLFWwindow* window) {
 
 Game::Game(GLFWwindow* main_window)
     : core(), window(main_window), scale_square_game(Game::computeScale(main_window)),
-      intervale(1.0), accumulative(0.0), camera(), timer(), map(scale_square_game, core.map),
+      intervale(.5), accumulative(0.0), camera(), timer(), map(scale_square_game, core.map),
       coin(core.coin_position, scale_square_game),
       snake(scale_square_game, core.snake.front().position) {
 
   int width, height = 0;
   glfwGetWindowSize(window, &width, &height);
+
   camera.updateProjectionMatrix(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f,
                                 0.1f, 100.0f);
+  camera.setPosition(scale_square_game.x * -0.5, scale_square_game.y * -0.5);
 }
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     core.processInput(UP);
-  else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS ||
+           glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     core.processInput(RIGHT);
-  else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS ||
+           glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     core.processInput(DOWN);
-  else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+  else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS ||
+           glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     core.processInput(LEFT);
 }
 

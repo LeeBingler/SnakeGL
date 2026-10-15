@@ -5,11 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/detail/type_vec.hpp>
 
-#include <iostream>
+Map::Map(std::vector<std::vector<int>>& map) : map(map) {}
 
-Map::Map(std::vector<std::vector<int>> &map) : map(map) {}
-
-Map::Map(glm::vec3 scale_game, std::vector<std::vector<int>> &map) : map(map) {
+Map::Map(glm::vec3 scale_game, std::vector<std::vector<int>>& map) : map(map) {
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);
@@ -25,11 +23,13 @@ Map::Map(glm::vec3 scale_game, std::vector<std::vector<int>> &map) : map(map) {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
 
-  scale_game.x *= map[0].size() * 2;
-  scale_game.y *= map.size() * 2;
+  double width = scale_game.x * map[0].size();
+  double height = scale_game.y * map.size();
 
   model = glm::mat4(1.0f);
-  model = glm::scale(model, scale_game);
+  model = glm::translate(
+      model, glm::vec3((width - scale_game.x) / 2.0f, (height - scale_game.y) / 2.0f, 0.0f));
+  model = glm::scale(model, glm::vec3(width, height, 1.0f));
   shader.use();
 }
 

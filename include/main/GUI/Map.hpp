@@ -6,13 +6,12 @@
 
 class Map {
 public:
-  std::vector<std::vector<int>> &map;
+  std::vector<std::vector<int>>& map;
 
   Shader shader = Shader("resources/shaders/Map/vertex.vs", "resources/shaders/Map/fragment.fs");
 
   unsigned int VAO, VBO, EBO;
   glm::mat4 model;
-  glm::vec3 translate;
   const float vertices[12] = {
       0.5f,  0.5f,  0.0f, // top right
       0.5f,  -0.5f, 0.0f, // bottom right
@@ -26,8 +25,8 @@ public:
 
   glm::mat4 projection, view;
 
-  Map(std::vector<std::vector<int>> &map);
-  Map(glm::vec3 scale_square_game, std::vector<std::vector<int>> &map);
+  Map(std::vector<std::vector<int>>& map);
+  Map(glm::vec3 scale_square_game, std::vector<std::vector<int>>& map);
   void destroyAll();
   void draw(OrthoCamera& camera);
 };
