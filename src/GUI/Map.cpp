@@ -35,6 +35,8 @@ Map::Map(glm::vec3 scale_game, std::vector<std::vector<int>>& map) : map(map) {
 }
 
 void Map::draw(OrthoCamera& camera) {
+  if (VAO == 0)
+    return;
   shader.use();
   view = camera.getViewMatrix();
   projection = camera.getProjectionMatrix();
@@ -48,8 +50,11 @@ void Map::draw(OrthoCamera& camera) {
 }
 
 void Map::destroyAll() {
+  if (VAO == 0)
+    return;
   shader.deleteProgram();
   glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VBO);
   glDeleteBuffers(1, &EBO);
+  VAO = VBO = EBO = 0;
 }

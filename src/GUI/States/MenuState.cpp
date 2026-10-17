@@ -29,7 +29,6 @@ bool MenuState::enter() {
     texture.setParameter(GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     texture.loadTexture(GL_RGB, GL_RGBA, GL_UNSIGNED_BYTE);
   }
-
   Size size = Window::get()->size;
   projection =
       glm::ortho(0.0f, static_cast<float>(size.width), 0.0f, static_cast<float>(size.height));

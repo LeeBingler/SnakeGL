@@ -35,6 +35,7 @@ set(SRC_CPP
     src/GUI/Timer.cpp
     src/GUI/States/GameState.cpp
     src/GUI/States/MenuState.cpp
+    src/GUI/States/ScoreState.cpp
     src/GUI/States/ExitState.cpp
     src/GUI/Button.cpp
     src/Core/Core.cpp

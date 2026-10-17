@@ -26,6 +26,7 @@ void renderLoop() {
 
     currentState->handleEvent(window);
     currentState->update();
+
     stateManager->changeState();
     currentState->render();
 

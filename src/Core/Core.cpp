@@ -51,12 +51,12 @@ void Core::updateCoin() {
   }
 }
 
-void Core::update() {
+bool Core::update() {
   if (!updateSnake()) {
     std::cout << "end game : " << Core::score << std::endl;
-    return;
+    return false;
   }
-    
+
   updateCoin();
 
   for (int y = 0; y < height_map; y++) {
@@ -66,4 +66,6 @@ void Core::update() {
     std::cout << std::endl;
   }
   std::cout << std::endl;
+
+  return true;
 }

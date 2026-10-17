@@ -1,4 +1,3 @@
-#include "glm/detail/type_vec.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "main/Window.hpp"
 #include <iostream>
@@ -14,7 +13,7 @@ void Button::destroyAll() {
 }
 
 Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
-    : string(s), font(f), x(x), y(y), scale((scale)) {
+    : string(s), font(f), x(x), y(y), scale(scale) {
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);

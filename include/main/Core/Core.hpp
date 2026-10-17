@@ -22,7 +22,7 @@ public:
   std::vector<std::vector<int>> map;
 
   Core();
-  void update();
+  bool update();
   void processInput(Direction_keys new_direction);
 
 private:

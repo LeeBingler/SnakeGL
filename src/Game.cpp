@@ -1,6 +1,9 @@
 #include "glm/detail/type_vec.hpp"
 #include "main/Core/Core.hpp"
+#include "main/StateManager.hpp"
 #include <main/Game.hpp>
+#include <main/States/State.hpp>
+#include <main/States/ScoreState.hpp>
 
 glm::vec3 Game::computeScale(GLFWwindow* window) {
   int width, height = 0;
@@ -44,7 +47,10 @@ void Game::update() {
   accumulative += timer.deltaTime;
 
   if (accumulative >= intervale) {
-    core.update();
+    if (!core.update()) {
+      StateManager* stateManager = StateManager::get();
+      stateManager->setNextState(ScoreState::get());
+    }
     accumulative -= intervale;
   }
 }
