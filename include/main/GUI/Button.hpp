@@ -12,6 +12,8 @@ public:
   void destroyAll();
   void update();
   void draw();
+  static constexpr float width = 160.0f;
+  static constexpr float height = 50.0f;
 
 private:
   // Font
@@ -22,8 +24,6 @@ private:
   bool isPressed;
   bool wasPressed;
   bool isHovered;
-  double width = 160.0f;
-  double height = 50.0f;
 
   // Shaders
   Shader shaderFont =

@@ -22,13 +22,10 @@ Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-  const float WIDTH_BTN = 160.0f;
-  const float HEIGHT_BTN = 50.0f;
-
   float left = x;
-  float right = x + WIDTH_BTN;
+  float right = x + width;
   float bottom = y;
-  float top = y + HEIGHT_BTN;
+  float top = y + height;
 
   float bgVertices[12] = {
       left,  top,    0.0f, // top-left

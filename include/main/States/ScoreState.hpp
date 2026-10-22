@@ -21,7 +21,7 @@ private:
   static ScoreState sScoreState;
 
   std::optional<TrueTypeFont> font;
-  std::optional<Button> score;
+  std::optional<Button> menu;
   std::optional<Button> again;
 
   ScoreState();
