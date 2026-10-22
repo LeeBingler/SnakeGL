@@ -26,6 +26,8 @@ Game::Game(GLFWwindow* main_window)
   double offset_x = (width - core.width_map * scale_square_game.x) / 2;
 
   camera.setPosition(scale_square_game.x * -0.5 - offset_x, scale_square_game.y * -0.5);
+
+  glfwSetTime(0.0);
 }
 
 void Game::processInput() {
