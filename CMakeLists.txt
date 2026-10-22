@@ -37,6 +37,7 @@ set(SRC_CPP
     src/GUI/States/MenuState.cpp
     src/GUI/States/ScoreState.cpp
     src/GUI/States/ExitState.cpp
+    src/GUI/States/utils.cpp
     src/GUI/Button.cpp
     src/Core/Core.cpp
     src/Core/CoreSnake.cpp

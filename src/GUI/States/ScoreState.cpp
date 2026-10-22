@@ -3,6 +3,7 @@
 #include <main/States/ScoreState.hpp>
 #include <main/States/GameState.hpp>
 #include <main/States/ExitState.hpp>
+#include <main/States/utils.hpp>
 #include <main/StateManager.hpp>
 #include <main/Window.hpp>
 
@@ -15,11 +16,6 @@ ScoreState* ScoreState::get() {
   return &sScoreState;
 }
 
-void playAgain() {
-  StateManager* state = StateManager::get();
-  state->setNextState(GameState::get());
-}
-
 bool ScoreState::enter() {
   font.emplace("resources/font/aileron.regular.otf");
 
@@ -29,8 +25,8 @@ bool ScoreState::enter() {
 
   TrueTypeFont* fontPtr = &font.value();
 
-  score.emplace("Score", fontPtr, 0.0, 0.0, 1.0, playAgain);
-  again.emplace("Again", fontPtr, width / 2, height / 2 - 10, 1.0, playAgain);
+  score.emplace("Score", fontPtr, 0.0, 0.0, 1.0, stateMenu);
+  again.emplace("Again", fontPtr, width / 2., height / 2., 1.0, stateGame);
 
   return true;
 }
@@ -53,9 +49,13 @@ void ScoreState::handleEvent(GLFWwindow* window) {
 void ScoreState::update() {
   if (score)
     score->update();
+  if (again)
+    again->update();
 }
 
 void ScoreState::render() {
   if (score)
     score->draw();
+  if (again)
+    again->draw();
 }
