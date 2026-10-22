@@ -3,10 +3,12 @@
 #include <main/Shader.hpp>
 #include "../../../src/font/TrueTypeFont.hpp"
 #include <string>
+#include <functional>
 
 class Button {
 public:
-  Button(std::string s, TrueTypeFont* f, float x, float y, float scale, void (*func)(void));
+  Button(std::string s, TrueTypeFont* f, float x, float y, float scale, std::function<void()> func);
+  Button(std::string s, TrueTypeFont* f, float x, float y, float scale);
   void destroyAll();
   void update();
   void draw();
@@ -16,7 +18,7 @@ private:
   std::string string;
   TrueTypeFont* font;
   float x, y, scale;
-  void (*onPress)(void);
+  std::function<void()> onPress = nullptr;
   bool isPressed;
   bool wasPressed;
   bool isHovered;

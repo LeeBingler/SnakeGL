@@ -45,11 +45,9 @@ bool MenuState::enter() {
 
   TrueTypeFont* fontPtr = &font.value();
 
-  auto smoothstep = []() { std::cout << "lambda"; };
-
-  play.emplace(" PLAY", fontPtr, 325.0, 300.0, 1.0, smoothstep);
-  level.emplace("LEVEL", fontPtr, 325.0, 200.0, 1.0, smoothstep);
-  quit.emplace(" QUIT", fontPtr, 325.0, 100.0, 1.0, smoothstep);
+  play.emplace(" PLAY", fontPtr, 325.0, 300.0, 1.0);
+  level.emplace("LEVEL", fontPtr, 325.0, 200.0, 1.0);
+  quit.emplace(" QUIT", fontPtr, 325.0, 100.0, 1.0);
 
   return true;
 }
