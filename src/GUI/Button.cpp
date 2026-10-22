@@ -1,6 +1,5 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "main/Window.hpp"
-#include <iostream>
 #include <main/GUI/Button.hpp>
 
 void Button::destroyAll() {
@@ -12,8 +11,8 @@ void Button::destroyAll() {
   glDeleteBuffers(1, &EBO);
 }
 
-Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
-    : string(s), font(f), x(x), y(y), scale(scale) {
+Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale, void (*func)(void))
+    : string(s), font(f), x(x), y(y), scale(scale), onPress(func) {
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);
@@ -48,9 +47,22 @@ Button::Button(std::string s, TrueTypeFont* f, float x, float y, float scale)
 }
 
 void Button::update() {
-  Cursor cursor = Window::get()->getCursor();
+  Window* win = Window::get();
+  Cursor cursor = win->getCursor();
+  Size size = win->size;
 
-  std::cout << cursor.xPos << " " << cursor.yPos << std::endl;
+  float mx = (float)cursor.xPos;
+  float my = (float)size.height - (float)cursor.yPos; // flip Y
+
+  isHovered = mx >= x && mx <= x + width && my >= y && my <= y + height;
+
+  isPressed = glfwGetMouseButton(win->getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+
+  // fire once, on the frame the click starts, only if it starts over the button
+  if (isHovered && isPressed && !wasPressed && onPress)
+    onPress();
+
+  wasPressed = isPressed;
 }
 
 void Button::draw() {

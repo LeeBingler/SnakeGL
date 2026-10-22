@@ -15,12 +15,22 @@ ScoreState* ScoreState::get() {
   return &sScoreState;
 }
 
+void playAgain() {
+  StateManager* state = StateManager::get();
+  state->setNextState(GameState::get());
+}
+
 bool ScoreState::enter() {
-  // TODO: Something is poorly instantiate -> segfault
   font.emplace("resources/font/aileron.regular.otf");
 
+  GLFWwindow* window = Window::get()->getWindow();
+  int width, height = 0;
+  glfwGetWindowSize(window, &width, &height);
+
   TrueTypeFont* fontPtr = &font.value();
-  score.emplace("Score", fontPtr, 0.0, 0.0, 1.0);
+
+  score.emplace("Score", fontPtr, 0.0, 0.0, 1.0, playAgain);
+  again.emplace("Again", fontPtr, width / 2, height / 2 - 10, 1.0, playAgain);
 
   return true;
 }

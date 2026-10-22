@@ -6,7 +6,7 @@
 
 class Button {
 public:
-  Button(std::string string, TrueTypeFont* font, float x, float y, float scale);
+  Button(std::string s, TrueTypeFont* f, float x, float y, float scale, void (*func)(void));
   void destroyAll();
   void update();
   void draw();
@@ -16,6 +16,12 @@ private:
   std::string string;
   TrueTypeFont* font;
   float x, y, scale;
+  void (*onPress)(void);
+  bool isPressed;
+  bool wasPressed;
+  bool isHovered;
+  double width = 160.0f;
+  double height = 50.0f;
 
   // Shaders
   Shader shaderFont =
