@@ -40,8 +40,7 @@ bool ScoreState::exit() {
 
 void ScoreState::handleEvent(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-    StateManager* state = StateManager::get();
-    state->setNextState(ExitState::get());
+    stateExit();
     return;
   }
 }
