@@ -57,10 +57,8 @@ bool Core::updateHead(Snake_part_t& head, std::array<int, 2> positionSnake) {
   for (; it != snake.end(); it++) {
     Snake_part_t node = *it;
 
-    if (node.position[0] == newPosition[0] && node.position[1] == newPosition[1]) {
-      wanted_direction = head.direction;
-      newPosition = getNewPosition(wanted_direction, positionSnake);
-    }
+    if (node.position[0] == newPosition[0] && node.position[1] == newPosition[1])
+      return false;
   }
 
   // Check if the snake is oob
