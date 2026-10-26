@@ -76,13 +76,22 @@ void Snake::draw(std::list<struct Snake_part>& snake_core, OrthoCamera& camera) 
   update_matrices(snake_core);
   view = camera.getViewMatrix();
   projection = camera.getProjectionMatrix();
+  shader.setMat4("view", view);
+  shader.setMat4("projection", projection);
+
+  const float minAlpha = 0.5f; // opacity of the tail tip
+  const size_t n = snake_gui.size();
+  size_t i = 0;
 
   for (auto& node : snake_gui) {
+    float t = (n > 1) ? (float)i / (float)(n - 1) : 0.0f; // 0 = head, 1 = tail
+    float alpha = 1.0f - t * (1.0f - minAlpha);
+
     shader.setMat4("model", node.model);
-    shader.setMat4("view", view);
-    shader.setMat4("projection", projection);
+    shader.setFloat("alpha", alpha);
     glBindVertexArray(node.VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    i++;
   }
 }
 
