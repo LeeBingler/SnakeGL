@@ -89,13 +89,19 @@ void Button::update() {
 
   isHovered = mx >= x && mx <= x + width && my >= y && my <= y + height;
 
-  isPressed = glfwGetMouseButton(win->getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+  bool down = glfwGetMouseButton(win->getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
-  // fire once, on the frame the click starts, only if it starts over the button
-  if (isHovered && isPressed && !wasPressed && onPress)
+  if (down && !wasPressed && isHovered)
+    isPressed = true;
+
+  // fire once, on the frame the click release, only if it hover the button
+  if (!down && wasPressed && isPressed && onPress && isHovered)
     onPress();
 
-  wasPressed = isPressed;
+  if (!down)
+    isPressed = false;
+
+  wasPressed = down;
 }
 
 void Button::draw() {

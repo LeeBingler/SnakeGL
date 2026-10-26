@@ -21,9 +21,9 @@ private:
   TrueTypeFont* font;
   float x, y, scale;
   std::function<void()> onPress = nullptr;
-  bool isPressed;
-  bool wasPressed;
-  bool isHovered;
+  bool isPressed = false;
+  bool wasPressed = false;
+  bool isHovered = false;
 
   // Shaders
   Shader shaderFont =
