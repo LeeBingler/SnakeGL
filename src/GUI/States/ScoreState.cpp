@@ -5,6 +5,7 @@
 #include <main/States/utils.hpp>
 #include <main/StateManager.hpp>
 #include <main/Window.hpp>
+#include <string>
 
 ScoreState::ScoreState() {}
 ScoreState ScoreState::sScoreState;
@@ -15,6 +16,8 @@ ScoreState* ScoreState::get() {
   return &sScoreState;
 }
 
+extern int ScoreGame;
+
 bool ScoreState::enter() {
   font.emplace("resources/font/aileron.regular.otf");
 
@@ -23,6 +26,8 @@ bool ScoreState::enter() {
   glfwGetWindowSize(window, &width, &height);
 
   TrueTypeFont* fontPtr = &font.value();
+  score.emplace("Score :" + std::to_string(ScoreGame), fontPtr, width / 2. - Button::width / 2,
+                height / 2. + Button::height * 2, 1.0, nullptr);
 
   again.emplace("Again", fontPtr, width / 2. - Button::width / 2, height / 2., 1.0, stateGame);
   menu.emplace("Menu", fontPtr, width / 2. - Button::width / 2., height / 2. - Button::height * 2,
@@ -46,6 +51,8 @@ void ScoreState::handleEvent(GLFWwindow* window) {
 }
 
 void ScoreState::update() {
+  if (score)
+    score->update();
   if (menu)
     menu->update();
   if (again)
@@ -53,6 +60,8 @@ void ScoreState::update() {
 }
 
 void ScoreState::render() {
+  if (score)
+    score->draw();
   if (menu)
     menu->draw();
   if (again)

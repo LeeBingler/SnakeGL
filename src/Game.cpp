@@ -5,6 +5,8 @@
 #include <main/States/State.hpp>
 #include <main/States/ScoreState.hpp>
 
+int ScoreGame = 0;
+
 glm::vec3 Game::computeScale(GLFWwindow* window) {
   int width, height = 0;
   glfwGetWindowSize(window, &width, &height);
@@ -52,6 +54,7 @@ void Game::update() {
     if (!core.update()) {
       StateManager* stateManager = StateManager::get();
       stateManager->setNextState(ScoreState::get());
+      ScoreGame = core.getScore();
     }
     accumulative -= intervale;
   }

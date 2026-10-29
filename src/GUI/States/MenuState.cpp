@@ -27,8 +27,6 @@ bool MenuState::enter() {
   const double middleBtnX = width / 2. - Button::width / 2.;
   const double middleBtnY = height / 2. - Button::height / 2. - 100;
 
-  // TODO: button on press is press even when its not the right frame -> change btn on Press
-  // condition
   play.emplace(" PLAY", fontPtr, middleBtnX, middleBtnY + 100., 1.0, stateGame);
   level.emplace("LEVEL", fontPtr, middleBtnX, middleBtnY, 1.0, stateExit);
   quit.emplace(" QUIT", fontPtr, middleBtnX, middleBtnY - 100, 1.0, stateExit);

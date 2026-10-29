@@ -39,11 +39,13 @@ void Coin::draw(std::vector<std::array<int, 2>> coin_position, OrthoCamera camer
   updateCoinGUI(coin_position);
   glm::mat4 view = camera.getViewMatrix();
   glm::mat4 projection = camera.getProjectionMatrix();
+  shader.setMat4("view", view);
+  shader.setMat4("projection", projection);
+
+  // TODO: change coin into glyph like warframe
 
   for (Coin_node_t& coin : coin_gui) {
     shader.setMat4("model", coin.model);
-    shader.setMat4("view", view);
-    shader.setMat4("projection", projection);
     glBindVertexArray(coin.VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }

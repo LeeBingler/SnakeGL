@@ -23,6 +23,7 @@ private:
   std::optional<TrueTypeFont> font;
   std::optional<Button> menu;
   std::optional<Button> again;
+  std::optional<Button> score;
 
   ScoreState();
   ~ScoreState();

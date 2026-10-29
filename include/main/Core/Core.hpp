@@ -24,6 +24,7 @@ public:
   Core();
   bool update();
   void processInput(Direction_keys new_direction);
+  int getScore();
 
 private:
   bool updateHead(Snake_part_t& node, std::array<int, 2> positionSnake);

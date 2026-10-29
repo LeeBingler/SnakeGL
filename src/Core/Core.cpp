@@ -53,7 +53,7 @@ void Core::updateCoin() {
 
 bool Core::update() {
   if (!updateSnake()) {
-    std::cout << "end game : " << Core::score << std::endl;
+    std::cout << "Score : " << Core::score << std::endl;
     return false;
   }
 
@@ -68,4 +68,8 @@ bool Core::update() {
   std::cout << std::endl;
 
   return true;
+}
+
+int Core::getScore() {
+  return score;
 }
